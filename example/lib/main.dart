@@ -112,6 +112,9 @@ class _MyAppState extends State<MyApp> {
         0x00, 0x00, 0x00, 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x03 ,
         0x00 ,   0x00 , 0x00 , 0x03 , 0x00 , 0x00 , 0x00 ];
     }else if(Platform.isAndroid){
+      //byteArrayOf(0x10, 0, 0, 0, 1, 0, 2, 0x10, 0, 0, 0, 0, 1, 0, 0, 0)
+      //sender.send(byteArrayOf(0x12, 0, 0, 0, 2, 0, 1, 0x92.toByte(), 3, 0, 0, 0, 1, 0, 0, 0, 0, 0))
+
       return [0x10, 0, 0, 0, 1, 0, 2, 0x10, 0, 0, 0, 0, 1, 0, 0, 0];
     }
     return null;
