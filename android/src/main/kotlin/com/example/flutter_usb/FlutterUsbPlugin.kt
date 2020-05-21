@@ -85,11 +85,16 @@ public class FlutterUsbPlugin : FlutterPlugin, MethodCallHandler {
         val mUsbManager = context.getSystemService(Context.USB_SERVICE) as UsbManager
         val deviceList = mUsbManager.deviceList
         //TODO json decode/encode
-        var json = "[";
+        var json = "["
+        var isEmpty = true
         for (device in deviceList) {
-            json += "{\"name\":\"${device.value.deviceName}\",\"description\":\"${device.value.deviceClass}\",\"bstr\":\"${device.key}\"},";
+            json += "{\"name\":\"${device.value.deviceName}\",\"description\":\"${device.value.deviceClass}\",\"bstr\":\"${device.key}\"},"
+            isEmpty = false;
         }
-        return json.dropLast(1) + "]";
+        if(!isEmpty){
+            json = json.dropLast(1)
+        }
+        return json + "]"
     }
 
     private fun connectToUsbDevice(context: Context, brts: String, result: Result) {
