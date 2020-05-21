@@ -35,7 +35,7 @@ flutter:
       ios:
         pluginClass: FlutterusbPlugin
       windows:
-        pluginClass: FlutterusbPlugin
+        pluginClass: FlutterUsbPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

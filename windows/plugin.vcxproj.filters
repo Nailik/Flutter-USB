@@ -36,7 +36,7 @@
     <ClCompile Include="usbdevice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="flutterusb_plugin.cpp">
+    <ClCompile Include="flutter_usb_plugin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,7 +50,7 @@
     <ClInclude Include="response.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="flutterusb_plugin.h">
+    <ClInclude Include="flutter_usb_plugin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
