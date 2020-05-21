@@ -1,4 +1,4 @@
-package com.example.flutterusb
+package com.example.flutter_usb
 
 //result may contains error
 class Response(val result: String,val dataSendLength: Int, val dataReceived: ByteArray){

@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    await FlutterUsb.initializeUsb;
+  //  await FlutterUsb.initializeUsb; //TODO windows only
 
     setState(() {
       _initialized = true;
@@ -100,23 +100,18 @@ class _MyAppState extends State<MyApp> {
   }
 
   sendConnectCommand() async{
-    final Response result = await FlutterUsb.sendCommand(new Uint8List.fromList(getConnectCommand()));
-    print(result);
-  }
-
-
-  static List<int> getConnectCommand(){
     if(Platform.isWindows){
-      return [ 0x01, 0x92, 0x00 , 0x00 , 0x00, 0x00, 0x00 , 0x00 , 0x00 , 0x00, 0x01 ,
+      var arr = [ 0x01, 0x92, 0x00 , 0x00 , 0x00, 0x00, 0x00 , 0x00 , 0x00 , 0x00, 0x01 ,
         0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 ,
         0x00, 0x00, 0x00, 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x00 , 0x03 ,
         0x00 ,   0x00 , 0x00 , 0x03 , 0x00 , 0x00 , 0x00 ];
+      var result = await FlutterUsb.sendCommand(new Uint8List.fromList(arr));
     }else if(Platform.isAndroid){
-      //byteArrayOf(0x10, 0, 0, 0, 1, 0, 2, 0x10, 0, 0, 0, 0, 1, 0, 0, 0)
-      //sender.send(byteArrayOf(0x12, 0, 0, 0, 2, 0, 1, 0x92.toByte(), 3, 0, 0, 0, 1, 0, 0, 0, 0, 0))
-
-      return [0x10, 0, 0, 0, 1, 0, 2, 0x10, 0, 0, 0, 0, 1, 0, 0, 0];
+      var arr = [ 0x10,  0x00,  0x00,  0x00,  0x01,  0x00,  0x02, 0x10,  0x00,  0x00,  0x00,  0x00,  0x01,  0x00, 0x00,  0x00 ];
+      var result = await FlutterUsb.sendCommand(new Uint8List.fromList(arr));
+      var arr2 = [ 0x12,  0x00,  0x00,  0x00,  0x02,  0x00,  0x01, 0x92,  0x03,  0x00,  0x00,  0x00,  0x01,  0x00,  0x00,  0x00,  0x00,  0x00 ];
+      var result2 = await FlutterUsb.sendCommand(new Uint8List.fromList(arr2));
     }
-    return null;
   }
+
 }

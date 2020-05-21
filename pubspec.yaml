@@ -30,8 +30,8 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.flutterusb
-        pluginClass: FlutterusbPlugin
+        package: com.example.flutter_usb
+        pluginClass: FlutterUsbPlugin
       ios:
         pluginClass: FlutterusbPlugin
       windows:

@@ -1,9 +1,9 @@
-package com.example.flutterusb
+package com.example.flutter_usb
+
 
 import android.content.Context
 import android.hardware.usb.UsbManager
-import androidx.annotation.NonNull;
-
+import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -11,8 +11,9 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
 
+
 /** FlutterusbPlugin */
-public class FlutterusbPlugin : FlutterPlugin, MethodCallHandler {
+public class FlutterUsbPlugin : FlutterPlugin, MethodCallHandler {
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -22,9 +23,9 @@ public class FlutterusbPlugin : FlutterPlugin, MethodCallHandler {
     private var usbDevice: FUsbDevice? = null
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutterusb")
-        channel.setMethodCallHandler(this);
         this.context = flutterPluginBinding.applicationContext;
+        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_usb")
+        channel.setMethodCallHandler(this);
     }
 
     // This static function is optional and equivalent to onAttachedToEngine. It supports the old
@@ -39,8 +40,9 @@ public class FlutterusbPlugin : FlutterPlugin, MethodCallHandler {
     companion object {
         @JvmStatic
         fun registerWith(registrar: Registrar) {
-            val channel = MethodChannel(registrar.messenger(), "flutterusb")
-            channel.setMethodCallHandler(FlutterusbPlugin())
+            registrar.activity()
+            val channel = MethodChannel(registrar.messenger(), "flutter_usb")
+            channel.setMethodCallHandler(FlutterUsbPlugin())
         }
     }
 
@@ -48,6 +50,8 @@ public class FlutterusbPlugin : FlutterPlugin, MethodCallHandler {
         context?.let { ctx ->
             if (call.method == "getPlatformVersion") {
                 result.success("Android ${android.os.Build.VERSION.RELEASE}")
+            } else if (call.method == "initializeUsb") {
+                result.success("ok")
             } else if (call.method == "getUsbDevices") {
                 result.success(getUsbDevices(ctx))
             } else if (call.method == "connectToUsbDevice") {
@@ -72,8 +76,9 @@ public class FlutterusbPlugin : FlutterPlugin, MethodCallHandler {
                     result.error("device null", "camera device is null", "camera device has not been connected")
                 }
             }
+        }?: run {
+            result.error("context null", "context null", "context null")
         }
-        result.error("context null", "context null", "context null")
     }
 
     private fun getUsbDevices(context: Context): String {
@@ -94,6 +99,7 @@ public class FlutterusbPlugin : FlutterPlugin, MethodCallHandler {
             Connector(context)
                     .onConnected { dev ->
                         usbDevice = dev
+                        result.success("ok")
                     }.onError { err ->
                         result.error(err, err, err)
                     }.connect(this.value)
@@ -109,7 +115,7 @@ public class FlutterusbPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-        this.context = null
+        // this.context = null
         channel.setMethodCallHandler(null)
     }
 }

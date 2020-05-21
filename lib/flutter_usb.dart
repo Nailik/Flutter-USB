@@ -30,7 +30,8 @@ class FlutterUsb {
     return await _channel.invokeMethod('connectToUsbDevice', usbDevice.bstr);
   }
 
-  static Future<Response> sendCommand(Uint8List data) async {
+  static Future<String> sendCommand(Uint8List data) async {
+    //TODO decode
     return await _channel.invokeMethod('sendCommand', data);
   }
 }

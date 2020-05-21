@@ -1,4 +1,4 @@
-package com.example.flutterusb
+package com.example.flutter_usb
 
 import android.hardware.usb.UsbDeviceConnection
 import android.hardware.usb.UsbEndpoint
@@ -24,9 +24,9 @@ class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, 
     private fun waitForResponse() {
         var response = false
         inb.clear()
+        var res = 0
         while (!response) {
             inb.position(0)
-            var res = 0
             while (res == 0) {
                 res = connection.bulkTransfer(epIn, inb.array(), receiveCapacity, receiveTimeout)
             }
@@ -34,7 +34,7 @@ class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, 
                 response = true
             }
         }
-        onResponseCallback?.invoke(Response("ok", transferred, inb.array()));
+        onResponseCallback?.invoke(Response("ok", transferred, inb.array().copyOf(res)));
     }
 
     fun onResponse(callback: (result: Response) -> Unit = {}): FUsbDevice {

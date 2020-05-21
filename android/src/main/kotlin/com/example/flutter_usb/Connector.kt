@@ -1,4 +1,4 @@
-package com.example.flutterusb
+package com.example.flutter_usb
 
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
