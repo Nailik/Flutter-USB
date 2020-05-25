@@ -12,10 +12,10 @@ Response::Response(string new_result, DWORD new_data_send_length, BYTE* new_byte
 string Response::toString()
 {
     std::stringstream ss;
-    ss << "{\"result\":" << result << "\"data_send_length\":\"" << data_send_length << "\",\"byte_list\":\"[";
+    ss << "{\"result\":\"" << result << "\",\"outDataLength\":" << data_send_length << ",\"inData\":[";
     for (int i(0); i < sizeof(byte_list) - 1; ++i) {
         ss << (int)byte_list[i] << ",";
     }
-    ss << (int)byte_list[sizeof(byte_list) - 1] << "]\"}";
+    ss << (int)byte_list[sizeof(byte_list) - 1] << "]}";
     return ss.str();
 }
