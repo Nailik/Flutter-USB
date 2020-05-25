@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
 import 'package:flutterusb/Response.dart';
 
+import 'Command.dart';
 import 'UsbDevice.dart';
 
 class FlutterUsb {
@@ -32,9 +32,9 @@ class FlutterUsb {
     return await _channel.invokeMethod('connectToUsbDevice', usbDevice.bstr);
   }
 
-  static Future<Response> sendCommand(Uint8List data) async {
-    //TODO decode
-    String result = await _channel.invokeMethod('sendCommand', data);
+  static Future<Response> sendCommand(Command command) async {
+    String result =
+        await _channel.invokeMethod('sendCommand', jsonEncode(command));
     result = result.replaceAll(r'\', r'\\');
     return Response.fromJson(jsonDecode(result));
   }
