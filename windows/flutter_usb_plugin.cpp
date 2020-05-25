@@ -5,11 +5,10 @@
 
 // For getPlatformVersion; remove unless needed for your plugin implementation.
 #include <VersionHelpers.h>
-
 #include <flutter/method_channel.h>
 #include <flutter/plugin_registrar_windows.h>
 #include <flutter/standard_method_codec.h>
-
+#include <string.h>
 #include <map>
 #include <memory>
 #include <sstream>
@@ -19,6 +18,7 @@
 #include <tchar.h>
 #include <process.h>
 #include <list>
+#include <.plugin_symlinks\flutterusb\windows\JSON.h>
 using namespace std;
 
 namespace {
@@ -131,12 +131,25 @@ void FlutterUsbPlugin::HandleMethodCall(
       //TODO result
   }
   else  if (method_call.method_name().compare("sendCommand") == 0) {
-      std::vector<uint8_t> command_value = method_call.arguments()->ByteListValue();
+      if (!method_call.arguments() || !method_call.arguments()->IsString()) {
+          result->Error("Bad arguments", "Expected string");
+          return;
+      }
+      string json_command = method_call.arguments()->StringValue();
 
-      Response command_response = sendCommand(Command(command_value));
+      JSONValue* value = JSON::Parse(json_command.c_str());
+      JSONObject root = value->AsObject();
+      JSONArray arr = root[L"inData"]->AsArray();
 
-      string value = command_response.toString();
-      flutter::EncodableValue response(value);
+      std::vector<uint8_t> data{ };
+      for (unsigned int i = 0; i < arr.size(); i++)
+      {
+          data.push_back(arr[i]->AsNumber());
+      }
+      Response command_response = sendCommand(Command(data, root[L"outDataLength"]->AsNumber()));
+
+      string response_json = command_response.toString();
+      flutter::EncodableValue response(response_json);
       result->Success(&response);
   } else {
     result->NotImplemented();
@@ -496,11 +509,10 @@ Response sendCommand(Command command) {
     BYTE* lpInData = &(command.byte_list)[0];
     DWORD cbInDataSize = command.command_length;
 
-    DWORD pOutDataSize = 0x100000;
-    BYTE* pOutData = new unsigned char[pOutDataSize];
+    BYTE* pOutData = new unsigned char[command.result_length];
     DWORD pdwActualDataSize;
     //see https://docs.microsoft.com/en-us/windows/win32/api/wia_xp/nf-wia_xp-iwiaitemextras-escape
-    HRESULT hr = ppWiaExtra->Escape(256, lpInData, cbInDataSize, pOutData, pOutDataSize, &pdwActualDataSize);
+    HRESULT hr = ppWiaExtra->Escape(256, lpInData, cbInDataSize, pOutData, command.result_length, &pdwActualDataSize);
     std::string message = std::system_category().message(hr);
 
     return Response(message, pdwActualDataSize, pOutData);

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutterusb/Command.dart';
 import 'package:flutterusb/UsbDevice.dart';
 import 'package:flutterusb/flutter_usb.dart';
 
@@ -135,7 +135,7 @@ class _MyAppState extends State<MyApp> {
         0x00,
         0x00
       ];
-      var result = await FlutterUsb.sendCommand(new Uint8List.fromList(arr));
+      var result = await FlutterUsb.sendCommand(new Command(arr));
     } else if (Platform.isAndroid) {
       var arr = [
         0x10,
@@ -155,7 +155,7 @@ class _MyAppState extends State<MyApp> {
         0x00,
         0x00
       ];
-      var result = await FlutterUsb.sendCommand(new Uint8List.fromList(arr));
+      var result = await FlutterUsb.sendCommand(new Command(arr));
       var arr2 = [
         0x12,
         0x00,
@@ -176,7 +176,7 @@ class _MyAppState extends State<MyApp> {
         0x00,
         0x00
       ];
-      var result2 = await FlutterUsb.sendCommand(new Uint8List.fromList(arr2));
+      var result2 = await FlutterUsb.sendCommand(new Command(arr2));
     }
   }
 }

@@ -33,8 +33,9 @@ class FlutterUsb {
   }
 
   static Future<Response> sendCommand(Command command) async {
+    String command_json = jsonEncode(command);
     String result =
-        await _channel.invokeMethod('sendCommand', jsonEncode(command));
+        await _channel.invokeMethod('sendCommand', command_json);
     result = result.replaceAll(r'\', r'\\');
     return Response.fromJson(jsonDecode(result));
   }
