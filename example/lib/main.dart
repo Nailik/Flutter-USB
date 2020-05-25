@@ -3,12 +3,10 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutterusb/UsbDevice.dart';
 import 'package:flutterusb/flutter_usb.dart';
 
-import 'main.reflectable.dart' show initializeReflectable;
-
 void main() {
-  initializeReflectable();
   runApp(MyApp());
 }
 
