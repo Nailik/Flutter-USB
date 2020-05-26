@@ -136,6 +136,7 @@ class _MyAppState extends State<MyApp> {
         0x00
       ];
       var result = await FlutterUsb.sendCommand(new Command(arr));
+      print(result);
     } else if (Platform.isAndroid) {
       var arr = [
         0x10,
