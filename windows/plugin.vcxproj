@@ -236,12 +236,16 @@
     <ClCompile Include="$(FLUTTER_EPHEMERAL_DIR)\cpp_client_wrapper\standard_codec.cc" />
     <ClCompile Include="command.cpp" />
     <ClCompile Include="flutter_usb_plugin.cpp" />
+    <ClCompile Include="JSON.cpp" />
+    <ClCompile Include="JSONValue.cpp" />
     <ClCompile Include="response.cpp" />
     <ClCompile Include="usbdevice.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="command.h" />
     <ClInclude Include="flutter_usb_plugin.h" />
+    <ClInclude Include="JSON.h" />
+    <ClInclude Include="JSONValue.h" />
     <ClInclude Include="response.h" />
     <ClInclude Include="usbdevice.h" />
   </ItemGroup>
