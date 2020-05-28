@@ -26,4 +26,5 @@ class Response {
    * Location object to json
    */
   Map<String, dynamic> toJson() => _$ResponseToJson(this);
+
 }

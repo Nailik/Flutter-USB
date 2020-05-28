@@ -38,17 +38,28 @@ class FlutterUsb {
   static Future<Response> sendCommand(Command command) async {
     String commandJson = jsonEncode(command);
     if (_loggingEnabled) {
-      logger.d("sendCommand $commandJson");
+      logger.d("sendCommand ${listToHexString(command.inData)}");
     }
     String result = await _channel.invokeMethod('sendCommand', commandJson);
     result = result.replaceAll(r'\', r'\\');
+    Response response = Response.fromJson(jsonDecode(result));
     if (_loggingEnabled) {
-      logger.d("receivedResponse $result");
+      logger.d("receivedResponse ${listToHexString(response.inData)}");
     }
-    return Response.fromJson(jsonDecode(result));
+    return response;
   }
 
   static void enableLogger() {
     _loggingEnabled = true;
+  }
+
+  static String listToHexString(List<int> inData) {
+    String result = "";
+    for (var i = 0; i < inData.length - 1; i += 2) {
+      result +=
+      "${inData[i].toRadixString(8).toString()}${inData[i + 1].toRadixString(
+          8)} ";
+    }
+    return result;
   }
 }
