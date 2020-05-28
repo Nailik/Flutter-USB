@@ -19,12 +19,4 @@ class Command {
    * Location object to json
    */
   Map<String, dynamic> toJson() => _$CommandToJson(this);
-
-  String commandToHexString(){
-    String result = "";
-    for(var i = 0; i < inData.length-1; i+=2){
-      result += "${inData[i].toRadixString(8).toString()}${inData[i+1].toRadixString(16)} ";
-    }
-    return result;
-  }
 }
