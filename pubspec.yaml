@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   json_annotation:
+  logger:
 
 dev_dependencies:
   json_serializable:
