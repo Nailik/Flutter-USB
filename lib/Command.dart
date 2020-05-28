@@ -23,7 +23,7 @@ class Command {
   String commandToHexString(){
     String result = "";
     for(var i = 0; i < inData.length-1; i+=2){
-      result += "${inData[i].toRadixString(8).toString()}${inData[i+1].toRadixString(8)} ";
+      result += "${inData[i].toRadixString(8).toString()}${inData[i+1].toRadixString(16)} ";
     }
     return result;
   }
