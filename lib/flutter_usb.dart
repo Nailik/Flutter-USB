@@ -55,7 +55,7 @@ class FlutterUsb {
 
   static String listToHexString(List<int> inData) {
     String result = "";
-    for (var i = 0; i < inData.length - 1; i ++) {
+    for (var i = 0; i < inData.length; i ++) {
       String part = inData[i].toRadixString(16).toString();
       if (part.length == 1) {
         result += "0";
