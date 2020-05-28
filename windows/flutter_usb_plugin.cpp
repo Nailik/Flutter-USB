@@ -507,15 +507,17 @@ HRESULT EnumerateItems(IWiaItem* pWiaItem) //XP or earlier
 Response sendCommand(Command command) {
 
     BYTE* lpInData = &(command.byte_list)[0];
-    DWORD cbInDataSize = command.command_length;
 
     BYTE* pOutData = new unsigned char[command.result_length];
     DWORD pdwActualDataSize;
     //see https://docs.microsoft.com/en-us/windows/win32/api/wia_xp/nf-wia_xp-iwiaitemextras-escape
-    HRESULT hr = ppWiaExtra->Escape(256, lpInData, cbInDataSize, pOutData, command.result_length, &pdwActualDataSize);
+    HRESULT hr = ppWiaExtra->Escape(256, lpInData, command.command_length, pOutData, command.result_length, &pdwActualDataSize);
     std::string message = std::system_category().message(hr);
 
-    return Response(message, pdwActualDataSize, pOutData);
+    BYTE* result = new unsigned char[pdwActualDataSize];
+   memcpy(&result, &pOutData, pdwActualDataSize);
+
+    return Response(message, pdwActualDataSize, result);
 }
 
 void initialize(IWiaDevMgr** pWiaDevMgr) {

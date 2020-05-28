@@ -13,9 +13,9 @@ string Response::toString()
 {
     std::stringstream ss;
     ss << "{\"result\":\"" << result << "\",\"outDataLength\":" << data_send_length << ",\"inData\":[";
-    for (int i(0); i < sizeof(byte_list) - 1; ++i) {
+    for (int i(0); i < data_send_length - 1; ++i) {
         ss << (int)byte_list[i] << ",";
     }
-    ss << (int)byte_list[sizeof(byte_list) - 1] << "]}";
+    ss << (int)byte_list[data_send_length - 1] << "]}";
     return ss.str();
 }
