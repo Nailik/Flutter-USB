@@ -5,21 +5,21 @@ It's a really early test project without any released versions yet.
 
 ## Getting Started
 
-//this enables to log send and received commands as hex
+this enables to log send and received commands as hex
 FlutterUsb.enableLogger();
 
 
-//this is necessary on windows to initialize wia
+this is necessary on windows to initialize wia
 FlutterUsb.initializeUsb;
 
-//this returns the found devices
+this returns the found devices
 FlutterUsb.getUsbDevices;
 
-//on android connect will prompt user to allow connection
-//endpoints for command are set here and at the moment it's hardcoded
+on android connect will prompt user to allow connection
+endpoints for command are set here and at the moment it's hardcoded
 FlutterUsb.connectToUsbDevice(device);
 
-//send command will send the given array and return a Response
+send command will send the given array and return a Response
 FlutterUsb.sendCommand(Command([0x02, 0x02]));
 
 **NOTE:**
