@@ -1,8 +1,19 @@
 # flutterusb
 
-This is a plugin that supports sending commands to USB devices on Windows (with WIA Api) and Android.
+This is a plugin that supports sending commands to USB devices on **Windows** (with WIA Api) and **Android**.
 It's a really early test project without any released versions yet.
 
+## Install
+Until release on pub.dev (where i think you should not release windows plugins yet)
+you need to edit your `pubspec.yaml` and add:
+
+`flutterusb:
+  git: https://github.com/Nailik/flutter_usb.git`
+  
+and to use:
+
+`import 'package:flutterusb/flutter_usb.dart';`
+    
 ## Getting Started
 
 this enables to log send and received commands as hex  
