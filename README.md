@@ -10,7 +10,7 @@ FlutterUsb.enableLogger();
 
 
 this is necessary on windows to initialize wia
-FlutterUsb.initializeUsb;
+\nFlutterUsb.initializeUsb;
 
 this returns the found devices
 FlutterUsb.getUsbDevices;
