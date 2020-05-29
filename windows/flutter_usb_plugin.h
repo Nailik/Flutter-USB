@@ -28,7 +28,7 @@ HRESULT EnumerateItems(IWiaItem* pWiaItem);
 void initialize(IWiaDevMgr** pWiaDevMgr);
 void getDevices(IWiaDevMgr* pWiaDevMgr, std::list<USBDevice>* mylist);
 Response sendCommand(Command command);
-void connectToDevice(IWiaDevMgr* pWiaDevMgr, BSTR bstrDeviceID, IWiaItem* ppWiaDevice);
+bool connectToDevice(IWiaDevMgr* pWiaDevMgr, BSTR bstrDeviceID, IWiaItem* ppWiaDevice);
 
 #if defined(__cplusplus)
 extern "C" {

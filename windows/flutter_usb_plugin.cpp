@@ -124,10 +124,12 @@ void FlutterUsbPlugin::HandleMethodCall(
       const wchar_t* s = str1.c_str();
 
       BSTR bstrDeviceID = SysAllocString(s);
-      connectToDevice(pWiaDevMgr, bstrDeviceID, ppWiaDevice);
-
-      flutter::EncodableValue response("version");
-      result->Success(&response);
+      if(connectToDevice(pWiaDevMgr, bstrDeviceID, ppWiaDevice)){
+        flutter::EncodableValue response("version");
+        result->Success(&response);
+      }else{
+          result->Error("Could not connect", "Error connecting");
+      }
       //TODO result
   }
   else  if (method_call.method_name().compare("sendCommand") == 0) {
@@ -514,10 +516,7 @@ Response sendCommand(Command command) {
     HRESULT hr = ppWiaExtra->Escape(256, lpInData, command.command_length, pOutData, command.result_length, &pdwActualDataSize);
     std::string message = std::system_category().message(hr);
 
-    BYTE* result = new unsigned char[pdwActualDataSize];
-   memcpy(&result, &pOutData, pdwActualDataSize);
-
-    return Response(message, pdwActualDataSize, result);
+    return Response(message, pdwActualDataSize, pOutData);
 }
 
 void initialize(IWiaDevMgr** pWiaDevMgr) {
@@ -533,9 +532,12 @@ void getDevices(IWiaDevMgr* pWiaDevMgr, std::list<USBDevice>* mylist) {
     HRESULT hr2 = EnumerateWiaDevices(pWiaDevMgr, mylist);
 }
 
-void connectToDevice(IWiaDevMgr* pWiaDevMgr, BSTR bstrDeviceID, IWiaItem* ppWiaDevice) {
+bool connectToDevice(IWiaDevMgr* pWiaDevMgr, BSTR bstrDeviceID, IWiaItem* ppWiaDevice) {
     usbDevice = CreateWiaDevice(pWiaDevMgr, bstrDeviceID, &ppWiaDevice);
-
-    // IWiaTransfer* pWiaTransfer = NULL;
-    HRESULT result = ppWiaDevice->QueryInterface(IID_IWiaItemExtras, (void**)&ppWiaExtra);
+    if(ppWiaDevice != 0 && usbDevice == S_OK){
+        // IWiaTransfer* pWiaTransfer = NULL;
+        HRESULT result = ppWiaDevice->QueryInterface(IID_IWiaItemExtras, (void**)&ppWiaExtra);
+        return result == S_OK;
+    }
+    return false;
 }
