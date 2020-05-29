@@ -8,6 +8,7 @@ import 'package:flutterusb/UsbDevice.dart';
 import 'package:flutterusb/flutter_usb.dart';
 
 void main() {
+  FlutterUsb.enableLogger();
   runApp(MyApp());
 }
 

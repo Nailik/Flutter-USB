@@ -4,7 +4,7 @@ part 'Command.g.dart';
 
 @JsonSerializable()
 class Command {
-  int outDataLength;
+  double outDataLength;
   List<int> inData;
 
   Command(this.inData, {this.outDataLength = 1024});

@@ -9,7 +9,7 @@ part of 'Response.dart';
 Response _$ResponseFromJson(Map<String, dynamic> json) {
   return Response(
     json['result'] as String,
-    json['outDataLength'] as int,
+    (json['outDataLength'] as num)?.toDouble(),
     (json['inData'] as List)?.map((e) => e as int)?.toList(),
   );
 }

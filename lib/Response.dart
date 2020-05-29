@@ -7,7 +7,7 @@ part 'Response.g.dart';
 @JsonSerializable()
 class Response {
   String result;
-  int outDataLength;
+  double outDataLength;
   List<int> inData;
 
   Uint8List getData(){

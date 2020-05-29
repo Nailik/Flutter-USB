@@ -9,7 +9,7 @@ part of 'Command.dart';
 Command _$CommandFromJson(Map<String, dynamic> json) {
   return Command(
     (json['inData'] as List)?.map((e) => e as int)?.toList(),
-    outDataLength: json['outDataLength'] as int,
+    outDataLength: (json['outDataLength'] as num)?.toDouble(),
   );
 }
 
