@@ -1,0 +1,2 @@
+load wiaguid.lib
+set errors to false

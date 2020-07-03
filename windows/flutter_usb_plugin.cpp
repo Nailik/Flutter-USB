@@ -133,8 +133,13 @@ void FlutterUsbPlugin::HandleMethodCall(
       //TODO result
   }
   else  if (method_call.method_name().compare("sendCommand") == 0) {
-      int outLength = method_call.arguments()[0].IntValue();
-      std::vector<uint8_t> inData = method_call.arguments()[0].ByteListValue();
+      string s2 = "dd";
+      string s3 = "dd";
+      if (method_call.arguments()->IsList()) {
+          string s = "dd";
+      }
+      int outLength = method_call.arguments()->ListValue()[0].DoubleValue();
+      std::vector<uint8_t> inData = method_call.arguments()->ListValue()[1].ByteListValue();
       Response command_response = sendCommand(Command(inData, outLength));
 
       std::vector<flutter::EncodableValue> response;
