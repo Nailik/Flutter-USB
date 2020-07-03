@@ -68,6 +68,7 @@ IWiaItem* ppWiaDevice = NULL;
 void FlutterUsbPlugin::HandleMethodCall(
     const flutter::MethodCall<flutter::EncodableValue> &method_call,
     std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result) {
+    _tprintf(TEXT("call"));
   // Replace "getPlatformVersion" check with your plugin's method.
   // See:
   // https://github.com/flutter/engine/tree/master/shell/platform/common/cpp/client_wrapper/include/flutter
@@ -133,12 +134,8 @@ void FlutterUsbPlugin::HandleMethodCall(
       //TODO result
   }
   else  if (method_call.method_name().compare("sendCommand") == 0) {
-      string s2 = "dd";
-      string s3 = "dd";
-      if (method_call.arguments()->IsList()) {
-          string s = "dd";
-      }
-      int outLength = method_call.arguments()->ListValue()[0].DoubleValue();
+      _tprintf(TEXT("sendCommand"));
+      int outLength = method_call.arguments()->ListValue()[0].ListValue()[0].IntValue();
       std::vector<uint8_t> inData = method_call.arguments()->ListValue()[1].ByteListValue();
       Response command_response = sendCommand(Command(inData, outLength));
 
@@ -260,7 +257,7 @@ HRESULT ReadSomeWiaProperties(IWiaPropertyStorage* pWiaPropertyStorage, PROPVARI
             //
             // Do something with the device ID
             //
-            _tprintf(TEXT("WIA_DIP_DEV_ID: %ws\n"), PropVar[2].bstrVal);
+            _tprintf(TEXT("WIA_DIP_DEV_ID4: %ws\n"), PropVar[2].bstrVal);
             //     if (0 == wcscmp(PropVar[0].bstrVal, L"ILCE-6300")) {
                    //  *bstrDeviceID = PropVar[2].bstrVal;
              //    }

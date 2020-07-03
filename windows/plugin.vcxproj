@@ -99,7 +99,7 @@
       <PreprocessorDefinitions>_DEBUG;FLUTTER_PLUGIN_IMPL;_WINDOWS;_USRDLL;_HAS_EXCEPTIONS=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <ExceptionHandling>false</ExceptionHandling>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <DisableSpecificWarnings>4100</DisableSpecificWarnings>
       <AdditionalIncludeDirectories>$(FLUTTER_EPHEMERAL_DIR);$(FLUTTER_EPHEMERAL_DIR)\cpp_client_wrapper\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -233,6 +233,7 @@
   <ItemGroup>
     <ClInclude Include="$(FlutterPluginName)_plugin.h" />
     <ClInclude Include="command.h" />
+    <ClInclude Include="flutter_usb_plugin.h" />
     <ClInclude Include="JSON.h" />
     <ClInclude Include="JSONValue.h" />
     <ClInclude Include="response.h" />
