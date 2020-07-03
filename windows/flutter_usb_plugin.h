@@ -12,9 +12,9 @@
 #include <process.h>
 
 #include <list>
-#include <.plugin_symlinks\flutter_usb\windows\response.h>
-#include <.plugin_symlinks\flutter_usb\windows\command.h>
-#include <.plugin_symlinks\flutter_usb\windows\usbdevice.h>
+#include <.plugin_symlinks\flutterusb\windows\response.h>
+#include <.plugin_symlinks\flutterusb\windows\command.h>
+#include <.plugin_symlinks\flutterusb\windows\usbdevice.h>
 
 #ifdef FLUTTER_PLUGIN_IMPL
 #define FLUTTER_PLUGIN_EXPORT __declspec(dllexport)

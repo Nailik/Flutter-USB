@@ -18,9 +18,9 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{FA5FD273-2947-4871-8433-C5243765DE33}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>flutter_usb</RootNamespace>
+    <RootNamespace>flutterusb</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>flutter_usb</ProjectName>
+    <ProjectName>flutterusb</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
