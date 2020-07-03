@@ -1,7 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d9549055-8d3d-4889-a0bd-01fbb0294d4c" name="Default Changelist" comment="" />
+    <list default="true" id="d9549055-8d3d-4889-a0bd-01fbb0294d4c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/de/kilianeller/flutter_usb/Connector.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/de/kilianeller/flutter_usb/FUsbDevice.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/de/kilianeller/flutter_usb/FlutterUsbPlugin.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/kotlin/de/kilianeller/flutter_usb/Response.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/kotlin/de/kilianeller/flutter_usb_example/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/android/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/Runner.sln" beforeDir="false" afterPath="$PROJECT_DIR$/example/windows/Runner.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,20 +42,32 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\kilia\Documents\Projects\flutter_usb\.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1eBS7YxPgMu8WhuesP98rN9EqVI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/android/src/main/kotlin/de/kilianeller/flutter_usb" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kilia\Documents\Projects\flutter_usb\android\src\main\kotlin\de\kilianeller\flutter_usb" />
       <recent name="C:\Users\kilia\Documents\Projects\flutter_usb" />
       <recent name="C:\Users\kilia\Documents\Projects\flutter_usb\lib" />
       <recent name="C:\Users\kilia\Documents\Projects\flutter_usb\example\lib" />
@@ -40,13 +84,30 @@
       <option name="presentableId" value="Default" />
       <updated>1593793325970</updated>
     </task>
+    <task id="LOCAL-00001" summary="w">
+      <created>1593800583753</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1593800583753</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="w" />
+    <option name="LAST_COMMIT_MESSAGE" value="w" />
   </component>
   <component name="WindowStateProjectService">
     <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593800526312">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593800526312" />
+    <state x="302" y="294" key="CommitChangelistDialog2" timestamp="1593800582377">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="302" y="294" key="CommitChangelistDialog2/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593800582377" />
     <state width="404" height="466" key="DebuggerActiveHint" timestamp="1593800036029">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -67,5 +128,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="2517" height="323" key="GridCell.Tab.0.right/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593800125957" />
+    <state x="240" y="433" key="Vcs.Push.Dialog.v2" timestamp="1593800585485">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="240" y="433" key="Vcs.Push.Dialog.v2/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593800585485" />
   </component>
 </project>
