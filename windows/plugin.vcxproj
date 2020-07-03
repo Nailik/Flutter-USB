@@ -16,11 +16,11 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{50D413AD-74E6-471C-8F13-C062A920498A}</ProjectGuid>
+    <ProjectGuid>5CCA2EFA-0B29-40DD-8700-0ADF78F186BD</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>flutterusb</RootNamespace>
+    <RootNamespace>flutter_usb</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>flutterusb</ProjectName>
+    <ProjectName>flutter_usb</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -231,23 +231,15 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="$(FlutterPluginName)_plugin.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(FlutterPluginName)_plugin.cpp" />
     <ClCompile Include="$(FLUTTER_EPHEMERAL_DIR)\cpp_client_wrapper\engine_method_result.cc" />
     <ClCompile Include="$(FLUTTER_EPHEMERAL_DIR)\cpp_client_wrapper\plugin_registrar.cc" />
     <ClCompile Include="$(FLUTTER_EPHEMERAL_DIR)\cpp_client_wrapper\standard_codec.cc" />
-    <ClCompile Include="command.cpp" />
-    <ClCompile Include="flutter_usb_plugin.cpp" />
-    <ClCompile Include="JSON.cpp" />
-    <ClCompile Include="JSONValue.cpp" />
-    <ClCompile Include="response.cpp" />
-    <ClCompile Include="usbdevice.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="command.h" />
-    <ClInclude Include="flutter_usb_plugin.h" />
-    <ClInclude Include="JSON.h" />
-    <ClInclude Include="JSONValue.h" />
-    <ClInclude Include="response.h" />
-    <ClInclude Include="usbdevice.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

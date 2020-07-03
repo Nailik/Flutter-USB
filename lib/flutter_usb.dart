@@ -46,8 +46,9 @@ class FlutterUsb {
   static Future<Response> sendCommand(Command command) async {
     logD("sendCommand ${command.inData.createString()}");
 
+    List<dynamic> commandList = List.from({command.outDataLength, command.inData});
     List<dynamic> result = await _channel
-        .invokeMethod('sendCommand', {command.outDataLength, command.inData});
+        .invokeMethod('sendCommand', commandList);
     logD("sendCommand result: $result");
 
     Response response = Response(result[0], result[1], result[2]);
