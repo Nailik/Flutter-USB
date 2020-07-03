@@ -1,4 +1,4 @@
 #import <Flutter/Flutter.h>
 
-@interface FlutterusbPlugin : NSObject<FlutterPlugin>
+@interface FlutterUsbPlugin : NSObject<FlutterPlugin>
 @end

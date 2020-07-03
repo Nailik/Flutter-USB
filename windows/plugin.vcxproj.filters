@@ -18,6 +18,32 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="flutter_usb_plugin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\windows\command.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\windows\JSON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\windows\JSONValue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\windows\response.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\windows\usbdevice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="$(FLUTTER_EPHEMERAL_DIR)\cpp_client_wrapper\plugin_registrar.cc">
       <Filter>Source Files\cpp_client_wrapper</Filter>
     </ClCompile>
@@ -27,43 +53,28 @@
     <ClCompile Include="$(FLUTTER_EPHEMERAL_DIR)\cpp_client_wrapper\engine_method_result.cc">
       <Filter>Source Files\cpp_client_wrapper</Filter>
     </ClCompile>
-    <ClCompile Include="command.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="response.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="usbdevice.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="flutter_usb_plugin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JSON.cpp">
+    <ClCompile Include="..\..\..\..\..\..\..\windows\JSONValue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="JSONValue.cpp">
+    <ClCompile Include="..\..\..\..\..\..\..\windows\response.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\windows\usbdevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\windows\command.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\windows\JSON.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="command.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="usbdevice.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="response.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="flutter_usb_plugin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JSON.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="JSONValue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <Text Include="..\..\..\..\..\..\..\windows\todos.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

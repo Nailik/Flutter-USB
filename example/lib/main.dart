@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutterusb/Command.dart';
-import 'package:flutterusb/Response.dart';
-import 'package:flutterusb/UsbDevice.dart';
-import 'package:flutterusb/flutter_usb.dart';
+import 'package:flutter_usb/Command.dart';
+import 'package:flutter_usb/Response.dart';
+import 'package:flutter_usb/UsbDevice.dart';
+import 'package:flutter_usb/flutter_usb.dart';
 
 void main() {
   FlutterUsb.enableLogger();

@@ -1,6 +1,6 @@
-# flutterusb_example
+# flutter_usb_example
 
-Demonstrates how to use the flutterusb plugin.
+Demonstrates how to use the flutter_usb plugin.
 
 ## Getting Started
 

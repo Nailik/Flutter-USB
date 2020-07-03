@@ -2,19 +2,12 @@
 #define FLUTTER_PLUGIN_FLUTTER_USB_PLUGIN_H_
 
 #include <flutter_plugin_registrar.h>
-
-#include <map>
-#include <memory>
-#include <sstream>
-#include <iostream>
 #include <wia_xp.h>
-#include <tchar.h>
-#include <process.h>
-
 #include <list>
-#include <.plugin_symlinks\flutterusb\windows\response.h>
-#include <.plugin_symlinks\flutterusb\windows\command.h>
-#include <.plugin_symlinks\flutterusb\windows\usbdevice.h>
+#include <list>
+#include "usbdevice.h"
+#include "command.h"
+#include "response.h"
 
 #ifdef FLUTTER_PLUGIN_IMPL
 #define FLUTTER_PLUGIN_EXPORT __declspec(dllexport)
@@ -30,13 +23,13 @@ void getDevices(IWiaDevMgr* pWiaDevMgr, std::list<USBDevice>* mylist);
 Response sendCommand(Command command);
 bool connectToDevice(IWiaDevMgr* pWiaDevMgr, BSTR bstrDeviceID, IWiaItem* ppWiaDevice);
 
+
 #if defined(__cplusplus)
 extern "C" {
 #endif
 
 FLUTTER_PLUGIN_EXPORT void FlutterUsbPluginRegisterWithRegistrar(
     FlutterDesktopPluginRegistrarRef registrar);
-
 
 #if defined(__cplusplus)
 }  // extern "C"

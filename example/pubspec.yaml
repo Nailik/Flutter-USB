@@ -1,5 +1,5 @@
-name: flutterusb_example
-description: Demonstrates how to use the flutterusb plugin.
+name: flutter_usb_example
+description: Demonstrates how to use the flutter_usb plugin.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -12,12 +12,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutterusb:
+  flutter_usb:
     # When depending on this package from a real application you should use:
-    #   flutterusb: ^x.y.z
+    #   flutter_usb: ^x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints
     # The example app is bundled with the plugin so we use a path dependency on
-    # the parent directory to use the current plugin's version. 
+    # the parent directory to use the current plugin's version.
     path: ../
 
   # The following adds the Cupertino Icons font to your application.

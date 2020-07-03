@@ -1,8 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
-
-part 'UsbDevice.g.dart';
-
-@JsonSerializable()
 class UsbDevice {
   String name;
   String description;
@@ -13,11 +8,18 @@ class UsbDevice {
   /*
    * Json to Location object
    */
-  factory UsbDevice.fromJson(Map<String, dynamic> json) =>
-      _$UsbDeviceFromJson(json);
+  factory UsbDevice.fromJson(Map<String, dynamic> json) => UsbDevice(
+        json['name'] as String,
+        json['description'] as String,
+        json['bstr'] as String,
+      );
 
   /*
    * Location object to json
    */
-  Map<String, dynamic> toJson() => _$UsbDeviceToJson(this);
+  Map<String, dynamic> toJson() => <String, dynamic>{
+        'name': name,
+        'description': description,
+        'bstr': bstr,
+      };
 }

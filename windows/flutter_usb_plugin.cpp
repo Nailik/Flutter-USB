@@ -5,21 +5,17 @@
 
 // For getPlatformVersion; remove unless needed for your plugin implementation.
 #include <VersionHelpers.h>
+
 #include <flutter/method_channel.h>
 #include <flutter/plugin_registrar_windows.h>
 #include <flutter/standard_method_codec.h>
-#include <string.h>
+
 #include <map>
 #include <memory>
 #include <sstream>
-#include <VersionHelpers.h>
-#include <iostream>
-#include <wia_xp.h>
 #include <tchar.h>
-#include <process.h>
-#include <list>
-#include <.plugin_symlinks\flutterusb\windows\JSON.h>
-using namespace std;
+#include "command.h"
+#include "response.h"
 
 namespace {
 
@@ -74,89 +70,70 @@ void FlutterUsbPlugin::HandleMethodCall(
   // and
   // https://github.com/flutter/engine/tree/master/shell/platform/glfw/client_wrapper/include/flutter
   // for the relevant Flutter APIs.
-  if (method_call.method_name().compare("getPlatformVersion") == 0) {
-    std::ostringstream version_stream;
-    version_stream << "Windows ";
-    if (IsWindows10OrGreater()) {
-      version_stream << "10+";
-    } else if (IsWindows8OrGreater()) {
-      version_stream << "8";
-    } else if (IsWindows7OrGreater()) {
-      version_stream << "7";
-    }
-    flutter::EncodableValue response(version_stream.str());
-    result->Success(&response);
-  }
-  else  if (method_call.method_name().compare("initializeUsb") == 0) {
-      initialize(&pWiaDevMgr);
-      flutter::EncodableValue response("Test");
-      result->Success(&response);
-  }
-  else  if (method_call.method_name().compare("getUsbDevices") == 0) {
-      std::list<USBDevice>* mylist = new list<USBDevice>;
-      getDevices(pWiaDevMgr, mylist);
-
-      string values = "[";
-      boolean empty = true;
-
-      std::list<USBDevice>::iterator it;
-      for (it = (*mylist).begin(); it != (*mylist).end(); ++it) {
-          empty = false;
-          values += it->toString() + ",";
-      }
-      if (!empty) {
-          values = values.substr(0, values.size() - 1);
-      }
-      values += "]";
-
-      flutter::EncodableValue response(values);
-      result->Success(&response);
-  } else  if (method_call.method_name().compare("connectToUsbDevice") == 0) {
-      if (!method_call.arguments() || !method_call.arguments()->IsString()) {
-          result->Error("Bad arguments", "Expected string");
-          return;
-      }
-
-      //convert string to BSTR
-      string bstr = method_call.arguments()->StringValue();
-      std::wstring str1(bstr.begin(), bstr.end());
-
-      const wchar_t* s = str1.c_str();
-
-      BSTR bstrDeviceID = SysAllocString(s);
-      if(connectToDevice(pWiaDevMgr, bstrDeviceID, ppWiaDevice)){
-        flutter::EncodableValue response("version");
+    if (method_call.method_name().compare("initializeUsb") == 0) {
+        initialize(&pWiaDevMgr);
+        flutter::EncodableValue response("Test");
         result->Success(&response);
-      }else{
-          result->Error("Could not connect", "Error connecting");
-      }
-      //TODO result
-  }
-  else  if (method_call.method_name().compare("sendCommand") == 0) {
-      if (!method_call.arguments() || !method_call.arguments()->IsString()) {
-          result->Error("Bad arguments", "Expected string");
-          return;
-      }
-      string json_command = method_call.arguments()->StringValue();
+    }
+    else  if (method_call.method_name().compare("getUsbDevices") == 0) {
+        std::list<USBDevice>* mylist = new list<USBDevice>;
+        getDevices(pWiaDevMgr, mylist);
 
-      JSONValue* value = JSON::Parse(json_command.c_str());
-      JSONObject root = value->AsObject();
-      JSONArray arr = root[L"inData"]->AsArray();
+        string values = "[";
+        boolean empty = true;
 
-      std::vector<uint8_t> data{ };
-      for (unsigned int i = 0; i < arr.size(); i++)
-      {
-          data.push_back(arr[i]->AsNumber());
-      }
-      Response command_response = sendCommand(Command(data, root[L"outDataLength"]->AsNumber()));
+        std::list<USBDevice>::iterator it;
+        for (it = (*mylist).begin(); it != (*mylist).end(); ++it) {
+            empty = false;
+            values += it->toString() + ",";
+        }
+        if (!empty) {
+            values = values.substr(0, values.size() - 1);
+        }
+        values += "]";
 
-      string response_json = command_response.toString();
-      flutter::EncodableValue response(response_json);
-      result->Success(&response);
-  } else {
-    result->NotImplemented();
-  }
+        flutter::EncodableValue response(values);
+        result->Success(&response);
+    }
+    else  if (method_call.method_name().compare("connectToUsbDevice") == 0) {
+        if (!method_call.arguments() || !method_call.arguments()->IsString()) {
+            result->Error("Bad arguments", "Expected string");
+            return;
+        }
+
+        //convert string to BSTR
+        string bstr = method_call.arguments()->StringValue();
+        std::wstring str1(bstr.begin(), bstr.end());
+
+        const wchar_t* s = str1.c_str();
+
+        BSTR bstrDeviceID = SysAllocString(s);
+        if (connectToDevice(pWiaDevMgr, bstrDeviceID, ppWiaDevice)) {
+            flutter::EncodableValue response("version");
+            result->Success(&response);
+        }
+        else {
+            result->Error("Could not connect", "Error connecting");
+        }
+        //TODO result
+    }
+    else  if (method_call.method_name().compare("sendCommand") == 0) {
+        int outLength = method_call.arguments()->ListValue()[0].IntValue();
+        std::vector<uint8_t> inData = method_call.arguments()->ListValue()[1].ByteListValue();
+        Response command_response = sendCommand(Command(inData, outLength));
+
+        std::vector<flutter::EncodableValue> response;
+        response.push_back(flutter::EncodableValue(command_response.result));
+        response.push_back(flutter::EncodableValue(((int)command_response.data_send_length)));
+        response.push_back(flutter::EncodableValue(command_response.byte_list));
+        flutter::EncodableValue resultValue(response);
+        result->Success(&resultValue);
+    }
+    else {
+        result->NotImplemented();
+    }
 }
+
 }  // namespace
 
 void FlutterUsbPluginRegisterWithRegistrar(
@@ -165,6 +142,7 @@ void FlutterUsbPluginRegisterWithRegistrar(
       flutter::PluginRegistrarManager::GetInstance()
           ->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
 }
+
 
 // wiacusb.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
@@ -534,7 +512,7 @@ void getDevices(IWiaDevMgr* pWiaDevMgr, std::list<USBDevice>* mylist) {
 
 bool connectToDevice(IWiaDevMgr* pWiaDevMgr, BSTR bstrDeviceID, IWiaItem* ppWiaDevice) {
     usbDevice = CreateWiaDevice(pWiaDevMgr, bstrDeviceID, &ppWiaDevice);
-    if(ppWiaDevice != 0 && usbDevice == S_OK){
+    if (ppWiaDevice != 0 && usbDevice == S_OK) {
         // IWiaTransfer* pWiaTransfer = NULL;
         HRESULT result = ppWiaDevice->QueryInterface(IID_IWiaItemExtras, (void**)&ppWiaExtra);
         return result == S_OK;

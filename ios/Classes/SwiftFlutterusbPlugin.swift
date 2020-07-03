@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
 
-public class SwiftFlutterusbPlugin: NSObject, FlutterPlugin {
+public class SwiftFlutterUsbPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "flutterusb", binaryMessenger: registrar.messenger())
-    let instance = SwiftFlutterusbPlugin()
+    let channel = FlutterMethodChannel(name: "flutter_usb", binaryMessenger: registrar.messenger())
+    let instance = SwiftFlutterUsbPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 

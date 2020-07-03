@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/flutterusb.iml" filepath="$PROJECT_DIR$/flutterusb.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/flutterusb_android.iml" filepath="$PROJECT_DIR$/android/flutterusb_android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/example/android/flutterusb_example_android.iml" filepath="$PROJECT_DIR$/example/android/flutterusb_example_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flutter_usb.iml" filepath="$PROJECT_DIR$/flutter_usb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/flutter_usb_android.iml" filepath="$PROJECT_DIR$/android/flutter_usb_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/android/flutter_usb_example_android.iml" filepath="$PROJECT_DIR$/example/android/flutter_usb_example_android.iml" />
     </modules>
   </component>
 </project>

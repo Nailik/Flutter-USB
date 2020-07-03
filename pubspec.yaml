@@ -1,6 +1,6 @@
-name: flutterusb
+name: flutter_usb
 description: A new Flutter plugin.
-version: 0.0.1
+version: 0.0.2
 author:
 homepage:
 
@@ -11,11 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  json_annotation:
   logger:
 
 dev_dependencies:
-  json_serializable:
   build_runner:
   flutter_test:
     sdk: flutter
