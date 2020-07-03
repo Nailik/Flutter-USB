@@ -4,7 +4,6 @@
 #include <flutter_plugin_registrar.h>
 #include <wia_xp.h>
 #include <list>
-#include <list>
 #include <.plugin_symlinks\flutter_usb\windows\response.h>
 #include <.plugin_symlinks\flutter_usb\windows\command.h>
 #include <.plugin_symlinks\flutter_usb\windows\usbdevice.h>
