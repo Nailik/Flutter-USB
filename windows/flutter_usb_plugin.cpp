@@ -133,26 +133,16 @@ void FlutterUsbPlugin::HandleMethodCall(
       //TODO result
   }
   else  if (method_call.method_name().compare("sendCommand") == 0) {
-      if (!method_call.arguments() || !method_call.arguments()->IsString()) {
-          result->Error("Bad arguments", "Expected string");
-          return;
-      }
-      string json_command = method_call.arguments()->StringValue();
+      int outLength = method_call.arguments()[0].IntValue();
+      std::vector<uint8_t> inData = method_call.arguments()[0].ByteListValue();
+      Response command_response = sendCommand(Command(inData, outLength));
 
-      JSONValue* value = JSON::Parse(json_command.c_str());
-      JSONObject root = value->AsObject();
-      JSONArray arr = root[L"inData"]->AsArray();
-
-      std::vector<uint8_t> data{ };
-      for (unsigned int i = 0; i < arr.size(); i++)
-      {
-          data.push_back(arr[i]->AsNumber());
-      }
-      Response command_response = sendCommand(Command(data, root[L"outDataLength"]->AsNumber()));
-
-      string response_json = command_response.toString();
-      flutter::EncodableValue response(response_json);
-      result->Success(&response);
+      std::vector<flutter::EncodableValue> response;
+      response.push_back(flutter::EncodableValue(command_response.result));
+      response.push_back(flutter::EncodableValue(((int)command_response.data_send_length)));
+      response.push_back(flutter::EncodableValue(command_response.byte_list));
+      flutter::EncodableValue resultValue(response);
+      result->Success(&resultValue);
   } else {
     result->NotImplemented();
   }
