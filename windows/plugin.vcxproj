@@ -231,28 +231,25 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\..\windows\command.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\windows\JSON.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\windows\JSONValue.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\windows\response.h" />
-    <ClInclude Include="..\..\..\..\..\..\..\windows\usbdevice.h" />
+    <ClInclude Include="command.h" />
+    <ClInclude Include="JSON.h" />
+    <ClInclude Include="JSONValue.h" />
+    <ClInclude Include="response.h" />
+    <ClInclude Include="usbdevice.h" />
     <ClInclude Include="flutter_usb_plugin.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\..\windows\command.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\windows\JSON.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\windows\JSONValue.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\windows\response.cpp" />
-    <ClCompile Include="..\..\..\..\..\..\..\windows\usbdevice.cpp" />
+    <ClCompile Include="command.cpp" />
+    <ClCompile Include="JSON.cpp" />
+    <ClCompile Include="JSONValue.cpp" />
+    <ClCompile Include="response.cpp" />
+    <ClCompile Include="usbdevice.cpp" />
     <ClCompile Include="flutter_usb_plugin.cpp" />
     <ClCompile Include="$(FLUTTER_EPHEMERAL_DIR)\cpp_client_wrapper\engine_method_result.cc" />
     <ClCompile Include="$(FLUTTER_EPHEMERAL_DIR)\cpp_client_wrapper\plugin_registrar.cc" />
     <ClCompile Include="$(FLUTTER_EPHEMERAL_DIR)\cpp_client_wrapper\standard_codec.cc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\..\..\..\..\..\windows\todos.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
