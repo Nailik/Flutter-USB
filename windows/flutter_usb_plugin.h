@@ -5,9 +5,9 @@
 #include <wia_xp.h>
 #include <list>
 #include <list>
-#include "usbdevice.h"
-#include "command.h"
-#include "response.h"
+#include <.plugin_symlinks\flutter_usb\windows\response.h>
+#include <.plugin_symlinks\flutter_usb\windows\command.h>
+#include <.plugin_symlinks\flutter_usb\windows\usbdevice.h>
 
 #ifdef FLUTTER_PLUGIN_IMPL
 #define FLUTTER_PLUGIN_EXPORT __declspec(dllexport)

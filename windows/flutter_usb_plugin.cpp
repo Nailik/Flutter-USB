@@ -14,8 +14,6 @@
 #include <memory>
 #include <sstream>
 #include <tchar.h>
-#include "command.h"
-#include "response.h"
 
 namespace {
 
