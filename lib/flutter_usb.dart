@@ -11,22 +11,30 @@ import 'UsbDevice.dart';
 class FlutterUsb {
   static var logger = Logger(printer: PrettyPrinter());
   static bool _loggingEnabled = false;
+  static int maxLogLength = 100;
   static const MethodChannel _channel = const MethodChannel('flutter_usb');
 
   static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
+    logD("platformVersion called");
+    var version = await _channel.invokeMethod('getPlatformVersion');
+    logD("platformVersion result: $version");
     return version;
   }
 
   static Future<String> get initializeUsb async {
-    return await _channel.invokeMethod('initializeUsb');
+    logD("initializeUsb called");
+    var result = await _channel.invokeMethod('initializeUsb');
+    logD("initializeUsb result: $result");
+    return result;
   }
 
   static Future<List<UsbDevice>> get getUsbDevices async {
-    String version = await _channel.invokeMethod('getUsbDevices');
-    version = version.replaceAll(r'\', r'\\');
+    logD("getUsbDevices called");
+    String devices = await _channel.invokeMethod('getUsbDevices');
+    devices = devices.replaceAll(r'\', r'\\');
+    logD("getUsbDevices result: $devices");
 
-    return (jsonDecode(version) as List)
+    return (jsonDecode(devices) as List)
         .map((e) => UsbDevice.fromJson(e))
         .toList();
   }
@@ -36,27 +44,41 @@ class FlutterUsb {
   }
 
   static Future<Response> sendCommand(Command command) async {
-    String commandJson = jsonEncode(command);
-    if (_loggingEnabled) {
-      logger.d("sendCommand ${listToHexString(command.inData)}");
-    }
-    String result = await _channel.invokeMethod('sendCommand', commandJson);
-    result = result.replaceAll(r'\', r'\\');
-    Response response = Response.fromJson(jsonDecode(result));
-    if (_loggingEnabled) {
-      logger.d("receivedResponse ${listToHexString(response.inData)}");
-    }
+    logD("sendCommand ${command.inData.createString()}");
+
+    List<dynamic> result = await _channel
+        .invokeMethod('sendCommand', {command.outDataLength, command.inData});
+    logD("sendCommand result: $result");
+
+    Response response = Response(result[0], result[1], result[2]);
+    logD("sendCommand response: ${command.inData.createString()}");
+
     return response;
   }
 
-  static void enableLogger() {
+  static void enableLogger({int maxLogLengthNew = 100}) {
+    maxLogLength = maxLogLengthNew;
     _loggingEnabled = true;
+    logD("loggingEnabled max length $maxLogLength --------------------------");
   }
 
-  static String listToHexString(List<int> inData) {
+  static void disableLogger() {
+    _loggingEnabled = false;
+    logD("loggingDisabled ---------------------------------------------------");
+  }
+
+  static void logD(String string) {
+    if (_loggingEnabled) {
+      logger.d(string);
+    }
+  }
+}
+
+extension Test on List<int> {
+  String createString() {
     String result = "";
-    for (var i = 0; i < inData.length; i ++) {
-      String part = inData[i].toRadixString(16).toString();
+    for (var i = 0; i < this.length && i < FlutterUsb.maxLogLength; i++) {
+      String part = this[i].toRadixString(16).toString();
       if (part.length == 1) {
         result += "0";
       }
