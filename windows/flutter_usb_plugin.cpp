@@ -494,7 +494,12 @@ Response sendCommand(Command command) {
     HRESULT hr = ppWiaExtra->Escape(256, lpInData, command.command_length, pOutData, command.result_length, &pdwActualDataSize);
     std::string message = std::system_category().message(hr);
 
-    return Response(message, pdwActualDataSize, pOutData);
+    std::vector<uint8_t> vec;
+    for (int i(0); i < command.result_length; ++i) {
+        vec.push_back((int)pOutData[i]);
+    }
+
+    return Response(message, (int)pdwActualDataSize, vec);
 }
 
 void initialize(IWiaDevMgr** pWiaDevMgr) {

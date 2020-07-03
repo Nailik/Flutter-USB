@@ -3,12 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="d9549055-8d3d-4889-a0bd-01fbb0294d4c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/.vs/Runner/v16/Browse.VC.db" beforeDir="false" afterPath="$PROJECT_DIR$/example/windows/.vs/Runner/v16/Browse.VC.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter_usb_plugin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter_usb_plugin.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/response.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/windows/response.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/response.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/response.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="f9791452" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -75,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593801866577</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="update??">
+      <created>1593805601780</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1593805601780</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -83,7 +95,8 @@
     <MESSAGE value="w" />
     <MESSAGE value="loads of fixes" />
     <MESSAGE value="wip" />
-    <option name="LAST_COMMIT_MESSAGE" value="wip" />
+    <MESSAGE value="update??" />
+    <option name="LAST_COMMIT_MESSAGE" value="update??" />
   </component>
   <component name="WindowStateProjectService">
     <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593800526312">
@@ -94,33 +107,33 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1128" y="589" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593805459223" />
-    <state x="302" y="294" key="CommitChangelistDialog2" timestamp="1593801865842">
+    <state x="302" y="294" width="1748" height="811" key="CommitChangelistDialog2" timestamp="1593805600882">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="302" y="294" key="CommitChangelistDialog2/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593801865842" />
-    <state width="404" height="466" key="DebuggerActiveHint" timestamp="1593800036029">
+    <state x="302" y="294" width="1748" height="811" key="CommitChangelistDialog2/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593805600882" />
+    <state width="423" height="466" key="DebuggerActiveHint" timestamp="1593806439471">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="404" height="466" key="DebuggerActiveHint/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593800036029" />
-    <state width="1258" height="422" key="GridCell.Tab.0.bottom" timestamp="1593805551321">
+    <state width="423" height="466" key="DebuggerActiveHint/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593806439471" />
+    <state width="1258" height="323" key="GridCell.Tab.0.bottom" timestamp="1593806416601">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1258" height="422" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593805551321" />
-    <state width="1258" height="422" key="GridCell.Tab.0.center" timestamp="1593805551321">
+    <state width="1258" height="323" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593806416601" />
+    <state width="1258" height="323" key="GridCell.Tab.0.center" timestamp="1593806416601">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1258" height="422" key="GridCell.Tab.0.center/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593805551321" />
-    <state width="1258" height="422" key="GridCell.Tab.0.left" timestamp="1593805551321">
+    <state width="1258" height="323" key="GridCell.Tab.0.center/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593806416601" />
+    <state width="1258" height="323" key="GridCell.Tab.0.left" timestamp="1593806416600">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1258" height="422" key="GridCell.Tab.0.left/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593805551321" />
-    <state width="1258" height="422" key="GridCell.Tab.0.right" timestamp="1593805551321">
+    <state width="1258" height="323" key="GridCell.Tab.0.left/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593806416600" />
+    <state width="1258" height="323" key="GridCell.Tab.0.right" timestamp="1593806416601">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1258" height="422" key="GridCell.Tab.0.right/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593805551321" />
-    <state x="240" y="433" key="Vcs.Push.Dialog.v2" timestamp="1593801868220">
+    <state width="1258" height="323" key="GridCell.Tab.0.right/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593806416601" />
+    <state x="240" y="433" key="Vcs.Push.Dialog.v2" timestamp="1593805603210">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="240" y="433" key="Vcs.Push.Dialog.v2/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593801868220" />
+    <state x="240" y="433" key="Vcs.Push.Dialog.v2/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593805603210" />
   </component>
 </project>
