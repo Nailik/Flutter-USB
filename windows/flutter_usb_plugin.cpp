@@ -15,6 +15,8 @@
 #include <sstream>
 #include <tchar.h>
 
+#include <comutil.h>
+
 namespace {
 
 class FlutterUsbPlugin : public flutter::Plugin {
@@ -55,9 +57,9 @@ FlutterUsbPlugin::FlutterUsbPlugin() {}
 FlutterUsbPlugin::~FlutterUsbPlugin() {}
 
 HRESULT usbDevice;
-IWiaItemExtras* ppWiaExtra = NULL;
-IWiaDevMgr* pWiaDevMgr = NULL;
-IWiaItem* ppWiaDevice = NULL;
+IWiaItemExtras* ppWiaExtraF = NULL;
+IWiaDevMgr* pWiaDevMgrF = NULL;
+IWiaItem* ppWiaDeviceF = NULL;
 
 void FlutterUsbPlugin::HandleMethodCall(
     const flutter::MethodCall<flutter::EncodableValue> &method_call,
@@ -69,13 +71,13 @@ void FlutterUsbPlugin::HandleMethodCall(
   // https://github.com/flutter/engine/tree/master/shell/platform/glfw/client_wrapper/include/flutter
   // for the relevant Flutter APIs.
     if (method_call.method_name().compare("initializeUsb") == 0) {
-        initialize(&pWiaDevMgr);
+        initialize(&pWiaDevMgrF);
         flutter::EncodableValue response("Test");
         result->Success(&response);
     }
     else  if (method_call.method_name().compare("getUsbDevices") == 0) {
         std::list<USBDevice>* mylist = new list<USBDevice>;
-        getDevices(pWiaDevMgr, mylist);
+        getDevices(pWiaDevMgrF, mylist);
 
         string values = "[";
         boolean empty = true;
@@ -106,7 +108,7 @@ void FlutterUsbPlugin::HandleMethodCall(
         const wchar_t* s = str1.c_str();
 
         BSTR bstrDeviceID = SysAllocString(s);
-        if (connectToDevice(pWiaDevMgr, bstrDeviceID, ppWiaDevice)) {
+        if (connectToDevice(pWiaDevMgrF, bstrDeviceID, ppWiaDeviceF)) {
             flutter::EncodableValue response("version");
             result->Success(&response);
         }
@@ -324,19 +326,13 @@ HRESULT EnumerateWiaDevices(IWiaDevMgr* pWiaDevMgr, std::list<USBDevice>* mylist
                 ReadSomeWiaProperties(pWiaPropertyStorage, PropVar);
 
                 // Your wchar_t*
-                wstring ws0(PropVar[0].bstrVal);
-                // your new String
-                string str0(ws0.begin(), ws0.end());
+                std::string str0(bstr_t(PropVar[0].bstrVal));
 
                 // Your wchar_t*
-                wstring ws1(PropVar[1].bstrVal);
-                // your new String
-                string str1(ws1.begin(), ws1.end());
+                std::string str1(bstr_t(PropVar[1].bstrVal));
 
                 // Your wchar_t*
-                wstring ws2(PropVar[2].bstrVal);
-                // your new String
-                string str2(ws2.begin(), ws2.end());
+                std::string str2(bstr_t(PropVar[2].bstrVal));
 
                 mylist->push_back(USBDevice(str0, str1, str2));
                 //
@@ -489,7 +485,7 @@ Response sendCommand(Command command) {
     BYTE* pOutData = new unsigned char[command.result_length];
     DWORD pdwActualDataSize;
     //see https://docs.microsoft.com/en-us/windows/win32/api/wia_xp/nf-wia_xp-iwiaitemextras-escape
-    HRESULT hr = ppWiaExtra->Escape(256, lpInData, command.command_length, pOutData, command.result_length, &pdwActualDataSize);
+    HRESULT hr = ppWiaExtraF->Escape(256, lpInData, command.command_length, pOutData, command.result_length, &pdwActualDataSize);
     std::string message = std::system_category().message(hr);
 
     std::vector<uint8_t> vec;
@@ -502,22 +498,22 @@ Response sendCommand(Command command) {
 
 void initialize(IWiaDevMgr** pWiaDevMgr) {
     //initialize wia
-    HRESULT h = CoInitialize(NULL);
+    /*HRESULT h = */ CoInitialize(NULL);
     //create wia device manager
-    HRESULT hr = CreateWiaDeviceManager(pWiaDevMgr);
+    /*HRESULT hr = */ CreateWiaDeviceManager(pWiaDevMgr);
     //TODO result (worked/error)
 }
 
 void getDevices(IWiaDevMgr* pWiaDevMgr, std::list<USBDevice>* mylist) {
     //show connected devices and get deviceId
-    HRESULT hr2 = EnumerateWiaDevices(pWiaDevMgr, mylist);
+    /*HRESULT hr2 = */ EnumerateWiaDevices(pWiaDevMgr, mylist);
 }
 
 bool connectToDevice(IWiaDevMgr* pWiaDevMgr, BSTR bstrDeviceID, IWiaItem* ppWiaDevice) {
     usbDevice = CreateWiaDevice(pWiaDevMgr, bstrDeviceID, &ppWiaDevice);
     if (ppWiaDevice != 0 && usbDevice == S_OK) {
         // IWiaTransfer* pWiaTransfer = NULL;
-        HRESULT result = ppWiaDevice->QueryInterface(IID_IWiaItemExtras, (void**)&ppWiaExtra);
+        HRESULT result = ppWiaDevice->QueryInterface(IID_IWiaItemExtras, (void**)&ppWiaExtraF);
         return result == S_OK;
     }
     return false;
