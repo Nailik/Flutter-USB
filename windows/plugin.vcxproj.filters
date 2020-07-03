@@ -24,7 +24,22 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="$(FlutterPluginName)_plugin.h">
+    <ClInclude Include="command.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="flutter_usb_plugin.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JSON.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JSONValue.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="response.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="usbdevice.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,7 +53,22 @@
     <ClCompile Include="$(FLUTTER_EPHEMERAL_DIR)\cpp_client_wrapper\engine_method_result.cc">
       <Filter>Source Files\cpp_client_wrapper</Filter>
     </ClCompile>
-    <ClCompile Include="$(FlutterPluginName)_plugin.cpp">
+    <ClCompile Include="command.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="flutter_usb_plugin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JSON.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JSONValue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="response.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="usbdevice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
