@@ -10,6 +10,8 @@
 #include <flutter/plugin_registrar_windows.h>
 #include <flutter/standard_method_codec.h>
 
+#pragma comment(lib,"wiaguid.lib")
+#pragma comment(lib,"comsuppw.lib")
 #include <map>
 #include <memory>
 #include <sstream>
