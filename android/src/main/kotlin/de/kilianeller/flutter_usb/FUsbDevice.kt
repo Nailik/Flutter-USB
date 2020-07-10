@@ -16,7 +16,10 @@ class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, 
     fun sendData(inData: Int, data: ByteArray) {
         //TODO in thread?
         transferred = connection.bulkTransfer(epOut, data, data.size, sendTimeout)
-        waitForResponse(inData)
+        //transferred < 0 is failure
+        if(inData > 0) { //only wait for data if user wants
+            waitForResponse(inData)
+        }
     }
 
     private fun waitForResponse(inData: Int) {
@@ -25,10 +28,10 @@ class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, 
         var res = 0
         while (!response) {
             inb.position(0)
-            while (res < 0 ) { //0 and more is sucess
+            while (res == 0) {
                 res = connection.bulkTransfer(epIn, inb.array(), inData, receiveTimeout)
             }
-            if (res >= 0) {
+            if (res >= 1) {
                 response = true
             }
         }
