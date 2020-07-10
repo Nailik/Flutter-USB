@@ -115,7 +115,7 @@ public class FlutterUsbPlugin : FlutterPlugin, MethodCallHandler {
         usbDevice?.onTransferred {
             //log?
         }?.onResponse {
-            result.success(it.toString())
+            result.success(listOf(it.result, it.dataSendLength, it.dataReceived))
         }?.sendData(inLength, ints)
     }
 }
