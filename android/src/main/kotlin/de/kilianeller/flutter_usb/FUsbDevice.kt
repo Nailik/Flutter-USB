@@ -17,8 +17,10 @@ class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, 
         //TODO in thread?
         transferred = connection.bulkTransfer(epOut, data, data.size, sendTimeout)
         //transferred < 0 is failure
-        if(inData > 0) { //only wait for data if user wants
+        if (inData > 0) { //only wait for data if user wants
             waitForResponse(inData)
+        } else {
+            onResponseCallback?.invoke(Response("ok", transferred, ByteArray(0)));
         }
     }
 
