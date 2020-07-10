@@ -25,10 +25,10 @@ class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, 
         var res = 0
         while (!response) {
             inb.position(0)
-            while (res == 0) {
+            while (res < 0 ) { //0 and more is sucess
                 res = connection.bulkTransfer(epIn, inb.array(), inData, receiveTimeout)
             }
-            if (res >= 1) {
+            if (res >= 0) {
                 response = true
             }
         }
