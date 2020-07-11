@@ -25,15 +25,18 @@ class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, 
     }
 
     private fun waitForResponse(inData: Int) {
+        println("start wait for response")
         var response = false
         val inb = ByteBuffer.allocate(inData).order(ByteOrder.LITTLE_ENDIAN)
-        var res = 0
+        var res = -1
         while (!response) {
             inb.position(0)
-            while (res == 0) {
+            while (res < 0) {
+                println("loop start bulk $res")
                 res = connection.bulkTransfer(epIn, inb.array(), inData, receiveTimeout)
+                println("loop end bulk $res")
             }
-            if (res >= 1) {
+            if (res >= 0) {
                 response = true
             }
         }
