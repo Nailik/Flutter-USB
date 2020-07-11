@@ -28,7 +28,7 @@ class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, 
         println("start wait for response")
         var response = false
         val inb = ByteBuffer.allocate(inData).order(ByteOrder.LITTLE_ENDIAN)
-        var res = -1
+        var res = 0
         while (!response) {
             inb.position(0)
             while (res < inData) {
