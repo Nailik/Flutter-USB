@@ -8,7 +8,7 @@ import java.nio.ByteOrder
 class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, private val connection: UsbDeviceConnection) {
 
     private val sendTimeout = 30000
-    private val receiveTimeout = 30000
+    private val receiveTimeout = 100
     private var transferred = 0
     private var onResponseCallback: ((result: Response) -> Unit)? = null
     private var onTransferredCallback: (() -> Unit)? = null
