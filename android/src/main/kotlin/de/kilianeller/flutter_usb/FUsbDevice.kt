@@ -13,25 +13,25 @@ class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, 
     private val sendTimeout = 30000
     private val receiveTimeout = 100
     private var transferred = 0
-    private var onResponseCallback: ((result: Response) -> Unit)? = null
-    private var onTransferredCallback: (() -> Unit)? = null
 
-    fun sendData(inData: Int, data: ByteArray) {
+    fun sendData(inData: Int, data: ByteArray, onTransferred: () -> Unit = {}, onResponse: (result: Response) -> Unit = {}) {
         //TODO in thread?
 
         CoroutineScope(Dispatchers.Default).launch {
 
             transferred = connection.bulkTransfer(epOut, data, data.size, sendTimeout)
+            onTransferred.invoke()
+
             //transferred < 0 is failure
             if (inData > 0) { //only wait for data if user wants
                 waitForResponse(inData) {
                     launch(Dispatchers.Main) {
-                        onResponseCallback?.invoke(it);
+                        onResponse.invoke(it)
                     }
                 }
             }else{
                 launch(Dispatchers.Main) {
-                    onResponseCallback?.invoke(Response("ok", transferred, ByteArray(0)));
+                    onResponse.invoke(Response("ok", transferred, ByteArray(0)));
                 }
             }
 
@@ -65,17 +65,8 @@ class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, 
         }
         println("finished response after ${System.currentTimeMillis() - long} millis")
 
-
+        callback.invoke(Response("ok", transferred, inb.array().copyOf(res)))
     }
 
-    fun onResponse(callback: (result: Response) -> Unit = {}): FUsbDevice {
-        onResponseCallback = callback
-        return this
-    }
-
-    fun onTransferred(callback: () -> Unit = {}): FUsbDevice {
-        onTransferredCallback = callback
-        return this
-    }
 
 }

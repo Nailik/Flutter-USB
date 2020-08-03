@@ -51,7 +51,7 @@ class FlutterUsb {
   }
 
   static Future<Response> sendCommand(Command command) async {
-    Completer completer = Completer();
+    Completer completer = Completer<Response>();
     logD("sendCommand ${command.inData.createString()}");
 
     //TODO event
@@ -66,7 +66,7 @@ class FlutterUsb {
     });
 
     logD("sendCommand return future");
-    return await completer.future;
+    return completer.future;
   }
 
   static void enableLogger({int maxLogLengthNew = 100}) {

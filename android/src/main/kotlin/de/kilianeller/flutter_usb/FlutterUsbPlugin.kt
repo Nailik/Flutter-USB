@@ -2,15 +2,13 @@ package de.kilianeller.flutter_usb
 
 import android.content.Context
 import android.hardware.usb.UsbManager
-import androidx.annotation.NonNull;
-
+import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
-import kotlinx.coroutines.Dispatchers
 
 /** FlutterUsbPlugin */
 public class FlutterUsbPlugin : FlutterPlugin, MethodCallHandler {
@@ -113,11 +111,9 @@ public class FlutterUsbPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     private fun sendCommand(inLength: Int, ints: ByteArray, result: Result) {
-        usbDevice?.onTransferred {
-            //log?
-        }?.onResponse {
+        usbDevice?.sendData(inLength, ints, onTransferred = {}, onResponse = {
             result.success(listOf(it.result, it.dataSendLength, it.dataReceived))
-        }?.sendData(inLength, ints)
+        })
     }
 }
 
