@@ -1,7 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9549055-8d3d-4889-a0bd-01fbb0294d4c" name="Default Changelist" comment="" />
+    <list default="true" id="d9549055-8d3d-4889-a0bd-01fbb0294d4c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/example/windows/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/windows/flutter/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/windows/runner/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/windows/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/windows/include/flutter_usb/flutter_usb_plugin.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/.vs/Runner/v16/Browse.VC.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/.vs/Runner/v16/Solution.VC.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/AppConfiguration.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/FlutterBuild.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/Runner.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/Runner.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/Runner.vcxproj.filters" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/flutter/.template_version" beforeDir="false" afterPath="$PROJECT_DIR$/example/windows/flutter/.template_version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/flutter/GeneratedPlugins.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/example/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/scripts/bundle_assets_and_deps.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/windows/scripts/prepare_dependencies.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_usb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_usb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/PluginInfo.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter_usb_plugin.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter_usb_plugin.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter_usb_plugin.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/plugin.vcxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/plugin.vcxproj.filters" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,11 +64,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/android/src/main/kotlin/de/kilianeller/flutter_usb" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/windows" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kilia\Documents\Projects\flutter_usb\windows" />
       <recent name="C:\Users\kilia\Documents\Projects\flutter_usb\android\src\main\kotlin\de\kilianeller\flutter_usb" />
       <recent name="C:\Users\kilia\Documents\Projects\flutter_usb" />
       <recent name="C:\Users\kilia\Documents\Projects\flutter_usb\lib" />
@@ -108,6 +142,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/example/windows/flutter/ephemeral/.plugin_symlinks/flutter_usb" />
+    </ignored-roots>
     <MESSAGE value="w" />
     <MESSAGE value="loads of fixes" />
     <MESSAGE value="wip" />
@@ -134,25 +171,33 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="423" height="466" key="DebuggerActiveHint/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593806439471" />
-    <state width="617" height="419" key="GridCell.Tab.0.bottom" timestamp="1593810699148">
+    <state width="1256" height="376" key="GridCell.Tab.0.bottom" timestamp="1596471276608">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="617" height="419" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593810699148" />
-    <state width="617" height="419" key="GridCell.Tab.0.center" timestamp="1593810699147">
+    <state width="1256" height="376" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596471276608" />
+    <state width="1256" height="376" key="GridCell.Tab.0.center" timestamp="1596471276608">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="617" height="419" key="GridCell.Tab.0.center/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593810699147" />
-    <state width="617" height="419" key="GridCell.Tab.0.left" timestamp="1593810699147">
+    <state width="1256" height="376" key="GridCell.Tab.0.center/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596471276608" />
+    <state width="1256" height="376" key="GridCell.Tab.0.left" timestamp="1596471276608">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="617" height="419" key="GridCell.Tab.0.left/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593810699147" />
-    <state width="617" height="419" key="GridCell.Tab.0.right" timestamp="1593810699148">
+    <state width="1256" height="376" key="GridCell.Tab.0.left/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596471276608" />
+    <state width="1256" height="376" key="GridCell.Tab.0.right" timestamp="1596471276608">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="617" height="419" key="GridCell.Tab.0.right/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593810699148" />
+    <state width="1256" height="376" key="GridCell.Tab.0.right/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596471276608" />
+    <state x="781" y="342" key="SettingsEditor" timestamp="1596469615026">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="342" key="SettingsEditor/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596469615026" />
     <state x="240" y="433" key="Vcs.Push.Dialog.v2" timestamp="1593815178190">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="240" y="433" key="Vcs.Push.Dialog.v2/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593815178190" />
+    <state x="92" y="92" width="2376" height="1216" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1596468107306">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="92" y="92" width="2376" height="1216" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596468107306" />
   </component>
 </project>

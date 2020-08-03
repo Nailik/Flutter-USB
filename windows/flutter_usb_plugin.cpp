@@ -1,4 +1,4 @@
-#include "flutter_usb_plugin.h"
+#include "include/flutter_usb/flutter_usb_plugin.h"
 
 // This must be included before many other Windows headers.
 #include <windows.h>
@@ -12,11 +12,12 @@
 
 #pragma comment(lib,"wiaguid.lib")
 #pragma comment(lib,"comsuppw.lib")
+
 #include <map>
 #include <memory>
 #include <sstream>
-#include <tchar.h>
 
+#include <tchar.h>
 #include <comutil.h>
 
 namespace {

@@ -4,7 +4,7 @@
 
 #include "generated_plugin_registrant.h"
 
-#include <flutter_usb_plugin.h>
+#include <flutter_usb/flutter_usb_plugin.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
   FlutterUsbPluginRegisterWithRegistrar(
