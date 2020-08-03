@@ -15,6 +15,8 @@ class FlutterUsb {
   static int maxLogLength = 100;
   static const MethodChannel _channel = const MethodChannel('flutter_usb');
 
+  static Completer completer;
+
   static Future<String> get platformVersion async {
     logD("platformVersion called");
     var version = await _channel.invokeMethod('getPlatformVersion');
@@ -34,29 +36,37 @@ class FlutterUsb {
     String devices = await _channel.invokeMethod('getUsbDevices');
     devices = devices.replaceAll(r'\', r'\\');
     logD("getUsbDevices result: $devices");
-
     return (jsonDecode(devices) as List)
         .map((e) => UsbDevice.fromJson(e))
         .toList();
   }
 
   static Future<String> connectToUsbDevice(UsbDevice usbDevice) async {
-    return await _channel.invokeMethod('connectToUsbDevice', usbDevice.bstr);
+    Completer completer = Completer();
+    _channel
+        .invokeMethod('connectToUsbDevice', usbDevice.bstr)
+        .then((value) => completer.complete(value));
+    logD("connectToUsbDevice return future");
+    return await completer.future;
   }
 
   static Future<Response> sendCommand(Command command) async {
+    Completer completer = Completer();
     logD("sendCommand ${command.inData.createString()}");
 
+    //TODO event
     List<dynamic> commandList =
         List.from({command.outDataLength, command.inData.toByteList()});
-    List<dynamic> result =
-        await _channel.invokeMethod('sendCommand', commandList);
-    logD("sendCommand result: $result");
 
-    Response response = Response(result[0], result[1], result[2]);
-    logD("sendCommand response: ${command.inData.createString()}");
+    _channel.invokeMethod('sendCommand', commandList).then((result) {
+      logD("sendCommand result: $result");
+      Response response = Response(result[0], result[1], result[2]);
+      logD("sendCommand response: ${command.inData.createString()}");
+      completer.complete(response);
+    });
 
-    return response;
+    logD("sendCommand return future");
+    return await completer.future;
   }
 
   static void enableLogger({int maxLogLengthNew = 100}) {
