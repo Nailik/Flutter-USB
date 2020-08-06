@@ -11,7 +11,7 @@ import java.nio.ByteOrder
 class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, private val connection: UsbDeviceConnection) {
 
     private val sendTimeout = 30000
-    private val receiveTimeout = 100
+    private val receiveTimeout = 10
     private var transferred = 0
 
     fun sendData(inData: Int, data: ByteArray, onTransferred: () -> Unit = {}, onResponse: (result: Response) -> Unit = {}) {
