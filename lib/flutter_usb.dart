@@ -62,13 +62,7 @@ class FlutterUsb {
     logD("sendCommand ${command.inData.createString()}");
 
     //TODO event
-    List<dynamic> commandList = List.from({
-      command.outDataLength,
-      command.inData.toByteList(),
-      command.sendTimeout,
-      command.receiveTimeout,
-      command.endIdentifier
-    });
+    List<dynamic> commandList = command.commandList;
 
     _channel.invokeMethod('sendCommand', commandList).then((result) {
       logD("sendCommand result: $result");

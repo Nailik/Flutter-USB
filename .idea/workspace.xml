@@ -4,7 +4,12 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9549055-8d3d-4889-a0bd-01fbb0294d4c" name="Default Changelist" comment="" />
+    <list default="true" id="d9549055-8d3d-4889-a0bd-01fbb0294d4c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Command.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Command.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_usb.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_usb.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -174,34 +179,38 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1128" y="589" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593805459223" />
-    <state x="1135" y="465" key="AndroidProcessChooserDialog" timestamp="1596481401181">
+    <state x="1035" y="407" key="#xdebugger.evaluate" timestamp="1596736227801">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1135" y="465" key="AndroidProcessChooserDialog/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596481401181" />
+    <state x="1035" y="407" key="#xdebugger.evaluate/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596736227801" />
+    <state x="1135" y="465" key="AndroidProcessChooserDialog" timestamp="1596736086049">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1135" y="465" key="AndroidProcessChooserDialog/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596736086049" />
     <state x="302" y="294" width="1748" height="811" key="CommitChangelistDialog2" timestamp="1596729235887">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="302" y="294" width="1748" height="811" key="CommitChangelistDialog2/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596729235887" />
-    <state width="423" height="466" key="DebuggerActiveHint" timestamp="1593806439471">
+    <state width="498" height="466" key="DebuggerActiveHint" timestamp="1596736001229">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="423" height="466" key="DebuggerActiveHint/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1593806439471" />
-    <state width="1819" height="454" key="GridCell.Tab.0.bottom" timestamp="1596494254076">
+    <state width="498" height="466" key="DebuggerActiveHint/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596736001229" />
+    <state width="1818" height="574" key="GridCell.Tab.0.bottom" timestamp="1596736307483">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1819" height="454" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596494254076" />
-    <state width="1819" height="454" key="GridCell.Tab.0.center" timestamp="1596494254075">
+    <state width="1818" height="574" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596736307483" />
+    <state width="1818" height="574" key="GridCell.Tab.0.center" timestamp="1596736307483">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1819" height="454" key="GridCell.Tab.0.center/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596494254075" />
-    <state width="1819" height="454" key="GridCell.Tab.0.left" timestamp="1596494254075">
+    <state width="1818" height="574" key="GridCell.Tab.0.center/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596736307483" />
+    <state width="1818" height="574" key="GridCell.Tab.0.left" timestamp="1596736307482">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1819" height="454" key="GridCell.Tab.0.left/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596494254075" />
-    <state width="1819" height="454" key="GridCell.Tab.0.right" timestamp="1596494254075">
+    <state width="1818" height="574" key="GridCell.Tab.0.left/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596736307482" />
+    <state width="1818" height="574" key="GridCell.Tab.0.right" timestamp="1596736307483">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1819" height="454" key="GridCell.Tab.0.right/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596494254075" />
+    <state width="1818" height="574" key="GridCell.Tab.0.right/0.0.2560.1400/2560.203.1920.1040@0.0.2560.1400" timestamp="1596736307483" />
     <state x="781" y="342" key="SettingsEditor" timestamp="1596469615026">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

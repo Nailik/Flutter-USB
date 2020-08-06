@@ -12,11 +12,21 @@ class Command {
       this.sendTimeout,
       this.receiveTimeout,
       this.endIdentifier}) {
-    if (this.sendTimeout == null) {
+    if (sendTimeout == null) {
       sendTimeout = FlutterUsb.sendTimeout;
     }
-    if (this.receiveTimeout == null) {
+    if (receiveTimeout == null) {
       receiveTimeout = FlutterUsb.receiveTimeout;
     }
+  }
+
+  List<dynamic> get commandList {
+    List<dynamic> list = List<dynamic>();
+    list.add(outDataLength);
+    list.add(inData.toByteList());
+    list.add(sendTimeout);
+    list.add(receiveTimeout);
+    list.add(endIdentifier);
+    return list;
   }
 }
