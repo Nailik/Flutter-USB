@@ -16,6 +16,13 @@ class FlutterUsb {
   static const MethodChannel _channel = const MethodChannel('flutter_usb');
 
   static Completer completer;
+  static int receiveTimeout = 500;
+  static int sendTimeout = 500;
+
+  static setTimeouts(int sendTimeout, int receiveTimeout) {
+    FlutterUsb.sendTimeout = sendTimeout;
+    FlutterUsb.receiveTimeout = receiveTimeout;
+  }
 
   static Future<String> get platformVersion async {
     logD("platformVersion called");
@@ -55,8 +62,13 @@ class FlutterUsb {
     logD("sendCommand ${command.inData.createString()}");
 
     //TODO event
-    List<dynamic> commandList =
-        List.from({command.outDataLength, command.inData.toByteList()});
+    List<dynamic> commandList = List.from({
+      command.outDataLength,
+      command.inData.toByteList(),
+      command.sendTimeout,
+      command.receiveTimeout,
+      command.endIdentifier
+    });
 
     _channel.invokeMethod('sendCommand', commandList).then((result) {
       logD("sendCommand result: $result");

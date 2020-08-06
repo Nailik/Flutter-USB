@@ -62,7 +62,11 @@ public class FlutterUsbPlugin : FlutterPlugin, MethodCallHandler {
                         if (call.arguments !is List<*>) {
                             result.error("wrong args", "should be List", "should be List")
                         } else {
-                            sendCommand((call.arguments as List<*>)[0] as Int, (call.arguments as List<*>)[1] as ByteArray, result)
+                            var args = (call.arguments as List<*>)
+                            usbDevice?.sendData(args[0] as Int, args[1] as ByteArray, args[2] as Int, args[3] as Int, args[4] as ByteArray?,
+                                    onTransferred = {}, onResponse = {
+                                result.success(listOf(it.result, it.dataSendLength, it.dataReceived))
+                            })
                         }
                     } else {
                         result.notImplemented()
@@ -108,12 +112,6 @@ public class FlutterUsbPlugin : FlutterPlugin, MethodCallHandler {
                         result.error(err, err, err)
                     }.connect(this.value)
         }
-    }
-
-    private fun sendCommand(inLength: Int, ints: ByteArray, result: Result) {
-        usbDevice?.sendData(inLength, ints, onTransferred = {}, onResponse = {
-            result.success(listOf(it.result, it.dataSendLength, it.dataReceived))
-        })
     }
 }
 
