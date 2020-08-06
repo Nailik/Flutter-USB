@@ -4,13 +4,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9549055-8d3d-4889-a0bd-01fbb0294d4c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/de/kilianeller/flutter_usb/FUsbDevice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/de/kilianeller/flutter_usb/FUsbDevice.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/de/kilianeller/flutter_usb/FlutterUsbPlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/de/kilianeller/flutter_usb/FlutterUsbPlugin.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Command.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Command.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/flutter_usb.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_usb.dart" afterDir="false" />
-    </list>
+    <list default="true" id="d9549055-8d3d-4889-a0bd-01fbb0294d4c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

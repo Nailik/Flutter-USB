@@ -62,7 +62,7 @@ public class FlutterUsbPlugin : FlutterPlugin, MethodCallHandler {
                         if (call.arguments !is List<*>) {
                             result.error("wrong args", "should be List", "should be List")
                         } else {
-                            var args = (call.arguments as List<*>)
+                            val args = (call.arguments as List<Any?>)
                             usbDevice?.sendData(args[0] as Int, args[1] as ByteArray, args[2] as Int, args[3] as Int, args[4] as ByteArray?,
                                     onTransferred = {}, onResponse = {
                                 result.success(listOf(it.result, it.dataSendLength, it.dataReceived))
