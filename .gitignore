@@ -8,4 +8,8 @@ build/
 pubspec.lock
 *.ipch
 *.db
+*.db-shm
+*.db-wal
+*.opendb
+
 .db

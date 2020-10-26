@@ -110,31 +110,29 @@ void FlutterUsbPlugin::HandleMethodCall(
 
         const wchar_t* s = str1.c_str();
 
-        BSTR bstrDeviceID = SysAllocString(s);
-        if (connectToDevice(pWiaDevMgrF, bstrDeviceID, ppWiaDeviceF)) {
-            flutter::EncodableValue response("version");
-            result->Success(&response);
-        }
-        else {
-            result->Error("Could not connect", "Error connecting");
-        }
-        //TODO result
-    }
-    else  if (method_call.method_name().compare("sendCommand") == 0) {
-        int outLength = method_call.arguments()->ListValue()[0].IntValue();
-        std::vector<uint8_t> inData = method_call.arguments()->ListValue()[1].ByteListValue();
-        Response command_response = sendCommand(Command(inData, outLength));
+      BSTR bstrDeviceID = SysAllocString(s);
+      if(connectToDevice(pWiaDevMgr, bstrDeviceID, ppWiaDevice)){
+        flutter::EncodableValue response("version");
+        result->Success(&response);
+      }else{
+          result->Error("Could not connect", "Error connecting");
+      }
+      //TODO result
+  }
+  else  if (method_call.method_name().compare("sendCommand") == 0) {
+      int outLength = method_call.arguments()[0].IntValue();
+      std::vector<uint8_t> inData = method_call.arguments()[0].ByteListValue();
+      Response command_response = sendCommand(Command(inData, outLength));
 
-        std::vector<flutter::EncodableValue> response;
-        response.push_back(flutter::EncodableValue(command_response.result));
-        response.push_back(flutter::EncodableValue(((int)command_response.data_send_length)));
-        response.push_back(flutter::EncodableValue(command_response.byte_list));
-        flutter::EncodableValue resultValue(response);
-        result->Success(&resultValue);
-    }
-    else {
-        result->NotImplemented();
-    }
+      std::vector<flutter::EncodableValue> response;
+      response.push_back(flutter::EncodableValue(command_response.result));
+      response.push_back(flutter::EncodableValue(((int)command_response.data_send_length)));
+      response.push_back(flutter::EncodableValue(command_response.byte_list));
+      flutter::EncodableValue resultValue(response);
+      result->Success(&resultValue);
+  } else {
+    result->NotImplemented();
+  }
 }
 
 }  // namespace
