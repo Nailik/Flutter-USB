@@ -36,46 +36,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d9549055-8d3d-4889-a0bd-01fbb0294d4c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/Runner.sln" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/Runner.vcxproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/flutter/.template_version" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/flutter/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/flutter/generated_plugin_registrant.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/flutter/generated_plugins.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/Runner.rc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/flutter_window.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/flutter_window.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/resource.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/resources/app_icon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/run_loop.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/run_loop.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/runner.exe.manifest" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/utils.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/utils.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/win32_window.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/win32_window.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/window_configuration.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/runner/window_configuration.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/windows/scripts/bundle_assets_and_deps.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Response.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Response.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/PluginInfo.props" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter_usb_plugin.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/include/flutter_usb/flutter_usb_plugin.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/plugin.vcxproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/plugin.vcxproj.filters" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/response.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/todos.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="d9549055-8d3d-4889-a0bd-01fbb0294d4c" name="Default Changelist" comment="cleaned" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -214,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596736367869</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="cleaned">
+      <created>1603714591603</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1603714591603</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,7 +214,8 @@
     <MESSAGE value="fixed issues" />
     <MESSAGE value="test low receive timout" />
     <MESSAGE value="fixed weird null element in list" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed weird null element in list" />
+    <MESSAGE value="cleaned" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleaned" />
   </component>
   <component name="WindowStateProjectService">
     <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593800526312">
