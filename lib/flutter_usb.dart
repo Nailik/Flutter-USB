@@ -15,7 +15,7 @@ class FlutterUsb {
   static int maxLogLength = 100;
   static const MethodChannel _channel = const MethodChannel('flutter_usb');
 
-  static Completer completer;
+  static Completer? completer;
   static int receiveTimeout = 500;
   static int sendTimeout = 500;
 
@@ -24,14 +24,14 @@ class FlutterUsb {
     FlutterUsb.receiveTimeout = receiveTimeout;
   }
 
-  static Future<String> get platformVersion async {
+  static Future<String?> get platformVersion async {
     logD("platformVersion called");
     var version = await _channel.invokeMethod('getPlatformVersion');
     logD("platformVersion result: $version");
     return version;
   }
 
-  static Future<String> get initializeUsb async {
+  static Future<String?> get initializeUsb async {
     logD("initializeUsb called");
     var result = await _channel.invokeMethod('initializeUsb');
     logD("initializeUsb result: $result");
@@ -40,7 +40,7 @@ class FlutterUsb {
 
   static Future<List<UsbDevice>> get getUsbDevices async {
     logD("getUsbDevices called");
-    String devices = await _channel.invokeMethod('getUsbDevices');
+    String devices = await (_channel.invokeMethod('getUsbDevices') as FutureOr<String>);
     devices = devices.replaceAll(r'\', r'\\');
     logD("getUsbDevices result: $devices");
     return (jsonDecode(devices) as List)
@@ -54,7 +54,7 @@ class FlutterUsb {
         .invokeMethod('connectToUsbDevice', usbDevice.bstr)
         .then((value) => completer.complete(value));
     logD("connectToUsbDevice return future");
-    return await completer.future;
+    return await (completer.future as FutureOr<String>);
   }
 
   static Future<Response> sendCommand(Command command) async {
@@ -72,7 +72,7 @@ class FlutterUsb {
     });
 
     logD("sendCommand return future");
-    return completer.future;
+    return completer.future as FutureOr<Response>;
   }
 
   static void enableLogger({int maxLogLengthNew = 100}) {
