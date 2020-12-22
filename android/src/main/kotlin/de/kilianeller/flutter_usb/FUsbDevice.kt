@@ -2,44 +2,32 @@ package de.kilianeller.flutter_usb
 
 import android.hardware.usb.UsbDeviceConnection
 import android.hardware.usb.UsbEndpoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.util.*
+import kotlin.concurrent.thread
 
 class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, private val connection: UsbDeviceConnection) {
 
-    private var transferred = 0
-
     fun sendData(inData: Int, data: ByteArray, sendTimeout: Int, receiveTimeout: Int, endIdentifier: ByteArray?, onTransferred: () -> Unit = {}, onResponse: (result: Response) -> Unit = {}) {
         //TODO in thread?
+        thread {
 
-        CoroutineScope(Dispatchers.Default).launch {
-
-            transferred = connection.bulkTransfer(epOut, data, data.size, sendTimeout)
+            val transferred = connection.bulkTransfer(epOut, data, data.size, sendTimeout)
             onTransferred.invoke()
 
             //transferred < 0 is failure
             if (inData > 0) { //only wait for data if user wants
-                waitForResponse(inData, receiveTimeout, endIdentifier) {
-                    launch(Dispatchers.Main) {
-                        onResponse.invoke(it)
-                    }
+                waitForResponse(inData, receiveTimeout, endIdentifier, transferred) {
+                    onResponse.invoke(it)
                 }
             } else {
-                launch(Dispatchers.Main) {
-                    onResponse.invoke(Response("ok", transferred, ByteArray(0)));
-                }
+                onResponse.invoke(Response("ok", transferred, ByteArray(0)));
             }
-
         }
-
-
     }
 
-    private fun waitForResponse(inData: Int, receiveTimeout: Int, endIdentifier: ByteArray?, callback: (result: Response) -> Unit = {}) {
+    private fun waitForResponse(inData: Int, receiveTimeout: Int, endIdentifier: ByteArray?, transferred: Int, callback: (result: Response) -> Unit = {}) {
         val long = System.currentTimeMillis()
         println("start wait for response")
         var response = false
@@ -50,23 +38,23 @@ class FUsbDevice(private val epIn: UsbEndpoint, private val epOut: UsbEndpoint, 
             inb.position(0)
             while (transfer) { //until result is -1
                 println("loop start bulk $res")
-                val ress = connection.bulkTransfer(epIn, inb.array(), inData - res, receiveTimeout)
+                val result = connection.bulkTransfer(epIn, inb.array(), inData - res, receiveTimeout)
 
                 endIdentifier?.let {arr ->
                     val index = Collections.indexOfSubList(inb.array().toList() , arr.toList())
                     if (index != -1){
-                        res += ress
-                        println("loop end bulk $ress and $res because contains end identifier at $index")
+                        res += result
+                        println("loop end bulk $result and $res because contains end identifier at $index")
                         transfer = false
                     }
                 }
 
-                if (ress == -1) {
+                if (result == -1) {
                     transfer = false
                 } else {
-                    res += ress
+                    res += result
                 }
-                println("loop end bulk $ress and $res")
+                println("loop end bulk $result and $res")
             }
             if (res >= 0) {
                 response = true

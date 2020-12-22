@@ -1,7 +1,7 @@
 class UsbDevice {
-  String? name;
-  String? description;
-  String? bstr;
+  String name;
+  String description;
+  String bstr;
 
   UsbDevice(this.name, this.description, this.bstr);
 
@@ -9,9 +9,9 @@ class UsbDevice {
    * Json to Location object
    */
   factory UsbDevice.fromJson(Map<String, dynamic> json) => UsbDevice(
-        json['name'] as String?,
-        json['description'] as String?,
-        json['bstr'] as String?,
+        json['name'] as String,
+        json['description'] as String,
+        json['bstr'] as String,
       );
 
   /*

@@ -14,8 +14,6 @@ class FlutterUsb {
   static bool _loggingEnabled = false;
   static int maxLogLength = 100;
   static const MethodChannel _channel = const MethodChannel('flutter_usb');
-
-  static Completer? completer;
   static int receiveTimeout = 500;
   static int sendTimeout = 500;
 
@@ -24,14 +22,14 @@ class FlutterUsb {
     FlutterUsb.receiveTimeout = receiveTimeout;
   }
 
-  static Future<String?> get platformVersion async {
+  static Future<String> get platformVersion async {
     logD("platformVersion called");
     var version = await _channel.invokeMethod('getPlatformVersion');
     logD("platformVersion result: $version");
     return version;
   }
 
-  static Future<String?> get initializeUsb async {
+  static Future<String> get initializeUsb async {
     logD("initializeUsb called");
     var result = await _channel.invokeMethod('initializeUsb');
     logD("initializeUsb result: $result");
