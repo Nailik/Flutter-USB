@@ -1,4 +1,4 @@
-# flutterusb
+# Flutter-USB
 
 This is a plugin that supports sending commands to USB devices on **Windows** (with WIA Api) and **Android**.
 It's a really early test project without any released versions yet.
